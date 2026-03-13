@@ -1,0 +1,889 @@
+/* ════════════════════════════════════════════════════
+   LENA EBLENKAMP — Portfolio 2026
+   styles.css
+════════════════════════════════════════════════════ */
+
+/* ── Variables ───────────────────────────────────── */
+:root {
+  --bg:           #ffffff;
+  --bg-alt:       #f4f4f4;
+  --gold:         #A8751A;
+  --gold-dim:     rgba(168, 117, 26, 0.55);
+  --gold-faint:   rgba(168, 117, 26, 0.08);
+  --gold-border:  rgba(168, 117, 26, 0.28);
+  --white:        #1a1a1a;
+  --gray:         #666666;
+  --gray-dim:     #999999;
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --max-w:  1200px;
+  --px:     clamp(1.5rem, 5vw, 4rem);
+  --py:     clamp(3.5rem, 7vw, 6.5rem);
+}
+
+/* ── Reset ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ── Real images inside placeholder wrapper ──────── */
+.img-ph img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hide dashed border + label text when a real image is present */
+.img-ph:has(img) {
+  border-color: transparent;
+  background: #000;
+}
+.img-ph:has(img)::before {
+  display: none;
+}
+
+/* ── Image Placeholder ───────────────────────────── */
+.img-ph {
+  position: relative;
+  width: 100%;
+  background: var(--bg-alt);
+  border: 1px dashed var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  overflow: hidden;
+}
+
+/* Crosshair lines for visual interest */
+.img-ph::before {
+  content: attr(data-label);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-dim);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1rem;
+  z-index: 1;
+  line-height: 1.5;
+}
+
+/* Aspect-ratio presets */
+.ratio-hero    { aspect-ratio: 16 / 7;  min-height: unset; }
+.ratio-portrait { aspect-ratio: 3 / 4;  min-height: unset; }
+.ratio-wide    { aspect-ratio: 21 / 8;  min-height: unset; }
+.ratio-4-3     { aspect-ratio: 4 / 3;   min-height: unset; }
+.ratio-sq      { aspect-ratio: 1 / 1;   min-height: unset; }
+.ratio-brand   { aspect-ratio: 5 / 1;  max-width: 240px; min-height: unset; }
+
+/* ── Image Grid ──────────────────────────────────── */
+.img-grid {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.25rem 0;
+}
+.img-grid .img-ph { min-height: 150px; }
+
+/* ── Sketch Grid (transparent PNGs on white/alt-bg) ─ */
+.sketch-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  align-items: start;
+}
+.sketch-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.g2  { grid-template-columns: repeat(2, 1fr); }
+.g3  { grid-template-columns: repeat(3, 1fr); }
+.g4  { grid-template-columns: repeat(4, 1fr); }
+.g5  { grid-template-columns: repeat(5, 1fr); }
+
+/* ── Section Container ───────────────────────────── */
+.section-inner,
+.about-grid,
+.overview,
+.proj-inner,
+.pnav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--px);
+}
+
+/* ══════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════ */
+#hero { padding: 0; }
+
+.site-header {
+  text-align: center;
+  padding: 4.5rem var(--px) 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.label-thin {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 200;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.85;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 9vw, 6rem);
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.hero-images {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.hero-video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════════════ */
+#about {
+  background: var(--bg-alt);
+  padding: var(--py) 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.2fr;
+  gap: 2.5rem 3.5rem;
+  align-items: start;
+}
+
+/* Column heading (JOURNEY / SKILLS / OVERVIEW) */
+.col-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  letter-spacing: 0.3em;
+  color: var(--white);
+  text-transform: uppercase;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--gold-border);
+  margin-bottom: 1.4rem;
+}
+
+/* Portrait */
+.about-portrait .img-ph { min-height: 340px; }
+
+.portrait-img {
+  display: block;
+  max-height: 420px;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 1.6rem; }
+
+.tl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.2rem;
+}
+
+.tl-org {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+}
+
+.tl-date {
+  font-size: 0.72rem;
+  color: var(--gray);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.tl-role {
+  font-size: 0.78rem;
+  color: var(--white);
+  opacity: 0.7;
+  line-height: 1.45;
+}
+
+/* Skills list */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--white);
+  opacity: 0.8;
+  padding: 0.38rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.skill-tag {
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  opacity: 1;
+}
+
+/* Overview */
+.overview {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--gold-border);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem 3rem;
+  margin-top: 0;
+}
+
+.overview-grid p {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--white);
+  opacity: 0.68;
+}
+
+/* ══════════════════════════════════════════════════
+   PROJECTS NAV
+══════════════════════════════════════════════════ */
+#projects-nav {
+  background: var(--bg);
+  padding: var(--py) 0;
+  overflow: hidden;
+}
+
+.pnav-inner {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+}
+
+/* "PROJECTS" vertical label */
+.pnav-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0 0.5rem;
+}
+
+.pnav-label span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Project list */
+.pnav-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pnav-item {
+  position: relative;
+  min-height: 140px;
+  border-bottom: 1px solid var(--gold-border);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.pnav-item:first-child { border-top: 1px solid var(--gold-border); }
+
+/* Full-bleed image background */
+.pn-thumb {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.pn-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.pnav-item:hover .pn-thumb img {
+  filter: grayscale(20%);
+  transform: scale(1.03);
+}
+
+/* Gradient so text is always readable */
+.pnav-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.pnav-item:hover::after {
+  opacity: 0.8;
+}
+
+/* Text sits above gradient */
+.pn-text {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2.5rem;
+  width: 50%;
+  transition: padding-left 0.25s ease;
+}
+
+.pnav-item:hover .pn-text { padding-left: 3rem; }
+
+.pn-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold);
+  line-height: 1;
+  margin-top: 0.5rem;
+}
+
+.pn-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  letter-spacing: 0.1em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.pn-sub {
+  font-size: 0.75rem;
+  color: var(--gray);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* Active state (set by JS when section is in view) */
+.pnav-item.is-active .pn-num  { color: var(--white); }
+.pnav-item.is-active .pn-title { color: var(--gold); }
+.pnav-item.is-active::before   { transform: scaleY(1); }
+
+/* ══════════════════════════════════════════════════
+   PROJECT SECTIONS
+══════════════════════════════════════════════════ */
+.proj-section {
+  padding: var(--py) 0;
+  border-top: 1px solid var(--gold-border);
+}
+
+.proj-section.alt-bg { background: var(--bg-alt); }
+
+.proj-inner { }
+
+/* Brand logo row */
+.proj-brand { margin-bottom: 2rem; }
+
+/* Section heading (e.g. "SKILL DEVELOPMENT") */
+.proj-section-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 4vw, 2.5rem);
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+}
+
+/* Sub-heading (e.g. "FOAM PROJECT") */
+.proj-sub-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.3em;
+  color: var(--white);
+  text-transform: uppercase;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--gold-border);
+  margin: 3rem 0 1.5rem;
+}
+
+/* Main title block (e.g. "THE BELVEDERE") */
+.proj-title-block { margin-bottom: 2.5rem; }
+
+.proj-main-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  letter-spacing: 0.18em;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.proj-tagline {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin-top: 0.6rem;
+}
+
+/* ══════════════════════════════════════════════════
+   LEAR CORPORATION — PROJECT 01
+══════════════════════════════════════════════════ */
+.lear-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 0;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+}
+
+.lear-header-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lear-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 2.5rem;
+  gap: 0.4rem;
+  border-left: 1px solid var(--gold-border);
+}
+
+.lear-role {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.lear-placement {
+  font-size: 0.78rem;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+}
+
+.lear-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  color: var(--gold);
+  line-height: 1;
+  margin-top: 1.2rem;
+}
+
+.proj-caption {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--gray);
+  text-transform: uppercase;
+  margin: -1.2rem 0 2rem;
+}
+
+.belt-feature {
+  position: relative;
+  margin: 0 0 1.5rem;
+}
+
+.belt-feature img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.belt-overlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+}
+
+.belt-overlay .proj-section-heading {
+  margin: 0 0 0.25rem;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+
+.belt-overlay .proj-caption {
+  margin: 0;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.caption-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 0 0 3rem;
+}
+
+.caption-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.caption-item p {
+  font-size: 0.7rem;
+  color: var(--gray);
+  line-height: 1.55;
+  margin-top: 0.55rem;
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════════════
+   LEAR — SEWING MY OWN DESIGN
+══════════════════════════════════════════════════ */
+.leather-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  align-items: start;
+  margin: 1.5rem 0;
+}
+
+.leather-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.leather-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.proj-img-full {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0.4rem 0 2.5rem;
+}
+
+/* ══════════════════════════════════════════════════
+   LEAR — FOAM PROJECT / FINAL PROJECT
+══════════════════════════════════════════════════ */
+.proj-mini-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin: 2rem 0 0.2rem;
+}
+
+.proj-mini-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--gray);
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+/* 5-image dev grid: left col (large + 3-across) | right col (seat image) */
+.final-dev-grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0.4rem;
+  align-items: start;
+  margin: 1rem 0 2rem;
+}
+
+.final-dev-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.final-dev-left > img,
+.final-dev-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.final-dev-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+/* 3 bottom images — equal height, consistent crop to match example */
+.final-dev-bottom img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Final renders: 3-across */
+.final-render-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  margin: 1rem 0 2.5rem;
+}
+
+.final-render-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════
+   LEAR — WHAT ELSE DID I LEARN
+══════════════════════════════════════════════════ */
+.learn-intro-box {
+  background: #1c3557;
+  padding: 2rem 2.5rem;
+  margin: 0.75rem 0 2rem;
+}
+
+.learn-intro-text {
+  font-size: 0.8rem;
+  color: #ffffff;
+  line-height: 1.7;
+  margin: 0 0 0.75rem;
+}
+
+.learn-intro-list {
+  margin: 0 0 0 1.2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.learn-intro-list li {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  padding-left: 0.25rem;
+}
+
+.learn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 2.5rem;
+  margin: 0 0 2rem;
+}
+
+.learn-item h4 {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
+}
+
+.learn-item p {
+  font-size: 0.72rem;
+  color: var(--gray);
+  line-height: 1.65;
+}
+
+.learn-photo-span {
+  grid-column: span 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* EVTOL camper design brief hero block */
+.design-brief-block {
+  margin: 2.5rem 0 0;
+}
+
+.design-brief-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.design-brief-body {
+  margin-top: 2rem;
+}
+
+.design-brief-body p {
+  font-size: 0.78rem;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 54rem;
+}
+
+/* ══════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════ */
+#footer {
+  background: var(--bg);
+  border-top: 1px solid var(--gold-border);
+  padding: 3.5rem var(--px);
+  text-align: center;
+}
+
+.footer-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+}
+
+.footer-sub {
+  font-size: 0.72rem;
+  color: var(--gray);
+  letter-spacing: 0.15em;
+  margin-top: 0.4rem;
+}
+
+/* ══════════════════════════════════════════════════
+   FADE-IN ANIMATION (driven by JS IntersectionObserver)
+══════════════════════════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .about-portrait {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+  }
+  .about-portrait .img-ph {
+    max-width: 300px;
+    width: 100%;
+    min-height: unset;
+  }
+  .overview-grid { grid-template-columns: 1fr; }
+  .g5  { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: 1fr; }
+
+  .g3 { grid-template-columns: repeat(2, 1fr); }
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .g5 { grid-template-columns: repeat(2, 1fr); }
+
+  .pn-text { width: 65%; }
+
+  .pnav-label span { font-size: 2rem; }
+
+  .lear-header { grid-template-columns: 1fr; }
+  .lear-header-text { border-left: none; border-top: 1px solid var(--gold-border); }
+  .caption-grid { grid-template-columns: repeat(2, 1fr); }
+  .learn-grid { grid-template-columns: repeat(2, 1fr); }
+  .final-dev-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .g2 { grid-template-columns: 1fr; }
+  .g3 { grid-template-columns: 1fr; }
+
+  .pnav-label { display: none; }
+  .pnav-inner { flex-direction: column; }
+}
