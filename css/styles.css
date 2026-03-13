@@ -876,38 +876,38 @@ ul { list-style: none; }
 
 /* EVTOL — wildlife impact panel */
 .wildlife-panel {
-  margin: 3rem 0 0;
-  background: linear-gradient(to bottom, #4c5868, #1f252e);
+  margin: 2rem 0 0;
+  background: #2d3e53;
   color: #ffffff;
 }
 
 .wildlife-inner {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 2.2rem var(--px) 2.6rem;
-  text-align: center;
+  padding: 0.6rem var(--px) 0.6rem;
 }
 
 .wildlife-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  text-transform: none;
-  margin-bottom: 1.2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem;
+  text-align: center;
 }
 
 .wildlife-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  align-items: start;
-  gap: 2.2rem;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: center;
+  gap: 1.8rem;
 }
 
 .wildlife-diagram img {
   width: 100%;
-  max-width: 520px;
-  margin: 0 auto;
+  max-width: 380px;
+  margin: 0.1rem auto 0;
   display: block;
 }
 
@@ -916,25 +916,28 @@ ul { list-style: none; }
   flex-direction: column;
   align-items: center;
   gap: 0.65rem;
+  text-align: center;
 }
 
 .wildlife-icon {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
 }
 
 .wildlife-subtitle {
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .wildlife-body {
-  font-size: 0.76rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
   line-height: 1.6;
   max-width: 16rem;
-  text-align: center;
 }
 
 @media (max-width: 700px) {
