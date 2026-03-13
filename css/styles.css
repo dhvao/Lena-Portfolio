@@ -220,13 +220,25 @@ ul { list-style: none; }
 }
 
 /* Portrait */
-.about-portrait .img-ph { min-height: 340px; }
+.about-portrait .img-ph {
+  background: var(--bg-alt);
+  border: none;
+  min-height: unset;
+  aspect-ratio: auto;
+  overflow: visible;
+}
 
-.portrait-img {
+.about-portrait .img-ph:has(img) {
+  background: var(--bg-alt);
+}
+
+.about-portrait .img-ph img {
+  position: static;
+  inset: auto;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   display: block;
-  max-height: 420px;
-  width: auto;
-  max-width: 100%;
 }
 
 /* Timeline */
@@ -783,10 +795,72 @@ ul { list-style: none; }
   margin: 2.5rem 0 0;
 }
 
+.design-brief-hero {
+  position: relative;
+}
+
 .design-brief-hero img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.design-brief-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 3rem 2.5rem;
+  pointer-events: none;
+}
+
+.design-brief-text {
+  max-width: none;
+}
+
+.design-brief-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 0.45rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.75);
+  white-space: nowrap;
+}
+
+.design-brief-subtitle {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 0.35rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+}
+
+.design-brief-year {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+
+.design-brief-num {
+  align-self: flex-end;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 .design-brief-body {
@@ -798,6 +872,84 @@ ul { list-style: none; }
   color: var(--gray);
   line-height: 1.7;
   max-width: 54rem;
+}
+
+/* EVTOL — wildlife impact panel */
+.wildlife-panel {
+  margin: 3rem 0 0;
+  background: linear-gradient(to bottom, #4c5868, #1f252e);
+  color: #ffffff;
+}
+
+.wildlife-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.2rem var(--px) 2.6rem;
+  text-align: center;
+}
+
+.wildlife-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  margin-bottom: 1.2rem;
+}
+
+.wildlife-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  align-items: start;
+  gap: 2.2rem;
+}
+
+.wildlife-diagram img {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: block;
+}
+
+.wildlife-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.wildlife-icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.wildlife-subtitle {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+}
+
+.wildlife-body {
+  font-size: 0.76rem;
+  line-height: 1.6;
+  max-width: 16rem;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .wildlife-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+}
+
+.design-brief-diagram {
+  display: block;
+  margin: 2.5rem auto 0;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
 }
 
 /* ══════════════════════════════════════════════════
