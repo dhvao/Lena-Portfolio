@@ -880,6 +880,15 @@ ul { list-style: none; }
   /* Green to blue/grey fade similar to EVTOL hero */
   background: linear-gradient(to bottom, #5b6f4f 0%, #3f4c59 55%, #2a333c 100%);
   color: #ffffff;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-origin: center;
+}
+
+.wildlife-panel:hover {
+  transform: translateY(-4px) perspective(900px) rotateX(-1.5deg);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
 }
 
 .wildlife-inner {
