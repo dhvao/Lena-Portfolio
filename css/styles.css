@@ -180,6 +180,7 @@ ul { list-style: none; }
   aspect-ratio: 16 / 7;
   overflow: hidden;
   background: var(--bg);
+  margin-bottom: calc(var(--px) / 2); /* soft white bar between video and next image */
 }
 
 .hero-video-wrap video {
