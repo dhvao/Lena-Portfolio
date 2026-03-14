@@ -882,7 +882,7 @@ ul { list-style: none; }
   /* Green to blue/grey fade similar to EVTOL hero */
   background: linear-gradient(to bottom, #5b6f4f 0%, #3f4c59 55%, #2a333c 100%);
   color: #ffffff;
-  border-radius: 16px;
+  border-radius: 2px;
   overflow: hidden;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   transform-origin: center;
@@ -1015,7 +1015,6 @@ ul { list-style: none; }
 /* Passenger journey strip under STORY */
 .journey-block {
   margin: 2rem 0 0;
-  position: relative;
 }
 
 .journey-img {
@@ -1025,17 +1024,35 @@ ul { list-style: none; }
 }
 
 .journey-heading {
-  position: absolute;
-  top: 0.6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.35rem;
   letter-spacing: 0.36em;
   text-transform: uppercase;
   color: #000000;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+/* Form inspiration hero under passenger journey */
+.form-hero {
+  margin: 2.2rem 0 0;
+}
+
+.form-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.form-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 1.2rem 0 0;
 }
 
 .design-brief-diagram {
