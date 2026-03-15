@@ -1,24 +1,12 @@
-name: Deploy to IONOS
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  ftp-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
+steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy via FTPS
+      - name: Deploy to IONOS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: access-5020016202.webspace-host.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          security: strict
-          server-dir: /public/
+          protocol: sftp
+          port: 22
+          server-dir: ./
