@@ -11,12 +11,14 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Upload files via FTP
+      - name: Deploy files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: access-5020016202.webspace-host.com
+          server: ftp.ionos.co.uk
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
           server-dir: /public/
