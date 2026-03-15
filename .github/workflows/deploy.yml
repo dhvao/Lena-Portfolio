@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy website
+      - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: access-5020016202.webspace-host.com
@@ -20,4 +20,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
+          security: strict
           server-dir: /public/
