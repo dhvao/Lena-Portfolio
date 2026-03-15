@@ -1,7 +1,19 @@
-steps:
-      - uses: actions/checkout@v4
+name: Deploy to IONOS
 
-      - name: Deploy to IONOS
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: access-5020016202.webspace-host.com
