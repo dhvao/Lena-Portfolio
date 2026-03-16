@@ -154,17 +154,19 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
   function open(sections) {
     content.innerHTML = '';
 
-    // Tab bar
-    const tabs = document.createElement('div');
-    tabs.className = 'gallery-tabs';
-    sections.forEach((section, i) => {
-      const tab = document.createElement('button');
-      tab.className = 'gallery-tab' + (i === 0 ? ' is-active' : '');
-      tab.textContent = section.label;
-      tab.addEventListener('click', () => showSection(i));
-      tabs.appendChild(tab);
-    });
-    content.appendChild(tabs);
+    // Tab bar (only shown when multiple sections)
+    if (sections.length > 1) {
+      const tabs = document.createElement('div');
+      tabs.className = 'gallery-tabs';
+      sections.forEach((section, i) => {
+        const tab = document.createElement('button');
+        tab.className = 'gallery-tab' + (i === 0 ? ' is-active' : '');
+        tab.textContent = section.label;
+        tab.addEventListener('click', () => showSection(i));
+        tabs.appendChild(tab);
+      });
+      content.appendChild(tabs);
+    }
 
     // Section panels
     sections.forEach((section, i) => {
