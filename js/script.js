@@ -112,3 +112,35 @@ fadeEls.forEach(el => {
     }, { threshold: 0.1 }).observe(brandMap);
   }
 }());
+
+/* ── Skills carousel ─────────────────────────────── */
+document.querySelectorAll('.skills-carousel').forEach(carousel => {
+  const viewport = carousel.querySelector('.sc-viewport');
+  const track    = carousel.querySelector('.sc-track');
+  const slides   = carousel.querySelectorAll('.sc-slide');
+  const dots     = carousel.querySelectorAll('.sc-dot');
+  const prev     = carousel.querySelector('.sc-btn--prev');
+  const next     = carousel.querySelector('.sc-btn--next');
+  const gap      = 16;
+  let current    = 0;
+
+  function updateTrack() {
+    const slideW  = slides[0].offsetWidth;
+    const vpW     = viewport.offsetWidth;
+    const offset  = -(current * (slideW + gap)) + (vpW - slideW) / 2;
+    track.style.transform = `translateX(${offset}px)`;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dots.forEach((d, i)   => d.classList.toggle('active', i === current));
+  }
+
+  function goTo(n) {
+    current = (n + slides.length) % slides.length;
+    updateTrack();
+  }
+
+  prev.addEventListener('click', () => goTo(current - 1));
+  next.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  window.addEventListener('resize', updateTrack);
+  updateTrack();
+});

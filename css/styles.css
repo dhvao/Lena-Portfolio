@@ -606,26 +606,106 @@ ul { list-style: none; }
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
-.caption-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+/* ── Skills carousel ──────────────────────── */
+.skills-carousel {
   margin: 0 0 3rem;
+  user-select: none;
 }
 
-.caption-item img {
+.sc-viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+.sc-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.sc-slide {
+  flex: 0 0 76%;
+  opacity: 0.3;
+  transition: opacity 0.45s ease;
+}
+
+.sc-slide.active {
+  opacity: 1;
+}
+
+.sc-slide img {
   width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
-.caption-item p {
-  font-size: 0.7rem;
+.sc-caption-wrap { padding: 0.7rem 0 0; }
+
+.sc-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sc-sub {
+  font-size: 0.73rem;
   color: var(--gray);
-  line-height: 1.55;
-  margin-top: 0.55rem;
-  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.sc-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--gold-border);
+  color: #A8751A;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sc-btn:hover { background: #A8751A; color: #fff; }
+.sc-btn--prev { left: 10px; }
+.sc-btn--next { right: 10px; }
+
+.sc-dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 0.9rem;
+}
+
+.sc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sc-dot.active { background: #A8751A; }
+
+/* Lear logo in nav */
+.pn-logo {
+  height: 1em;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 3px;
+  object-fit: contain;
 }
 
 /* ══════════════════════════════════════════════════
@@ -1186,6 +1266,54 @@ ul { list-style: none; }
   display: block;
 }
 
+.cmf-left,
+.cmf-right {
+  position: relative;
+}
+
+.cmf-left img,
+.cmf-right img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Vertical label on LEFT side of CMF board */
+.cmf-side-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 22px;
+  background: rgba(10, 10, 10, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fff;
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Destination title overlaid at TOP of right image */
+.cmf-top-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 10px;
+  background: rgba(10, 10, 10, 0.45);
+  color: #fff;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 /* PACKAGING sub-heading */
 .packaging-heading {
   font-family: var(--font-display);
@@ -1196,15 +1324,15 @@ ul { list-style: none; }
   margin: 2rem 0 1rem;
 }
 
-/* packaging strip — 1 image per row */
-.packaging-strip {
-  display: flex;
-  flex-direction: column;
+/* packaging 2×2 grid */
+.packaging-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
   margin: 0 0 2rem;
 }
 
-.packaging-strip img {
+.packaging-grid img {
   width: 100%;
   height: auto;
   display: block;
@@ -1422,7 +1550,6 @@ ul { list-style: none; }
 
   .lear-header { grid-template-columns: 1fr; }
   .lear-header-text { border-left: none; border-top: 1px solid var(--gold-border); }
-  .caption-grid { grid-template-columns: repeat(2, 1fr); }
   .learn-grid { grid-template-columns: repeat(2, 1fr); }
   .final-dev-grid { grid-template-columns: 1fr; }
 }
