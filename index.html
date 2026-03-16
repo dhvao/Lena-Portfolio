@@ -462,12 +462,137 @@
         </div>
       </div>
 
-      <!-- EVTOL CAMPER — PASSENGER JOURNEY -->
-      <div class="journey-block">
-        <h3 class="journey-heading">PASSENGER JOURNEY</h3>
-        <img src="Images/skill development/design brief section/WhatsApp Image 2026-03-14 at 16.27.53.png" alt="Passenger journey diagram for the Eblen-Kamper" class="journey-img">
-      </div>
+    </div><!-- /proj-inner -->
 
+    <!-- EVTOL CAMPER — PASSENGER JOURNEY (full bleed SVG roadmap) -->
+    <div class="journey-roadmap">
+      <div class="roadmap-svg-wrap">
+        <h3 class="roadmap-title">PASSENGER JOURNEY</h3>
+        <svg id="roadmapSvg" viewBox="-40 0 1500 540" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+
+          <defs>
+            <clipPath id="clip-n2">
+              <circle cx="240" cy="348" r="44"/>
+            </clipPath>
+            <clipPath id="clip-n3">
+              <circle cx="395" cy="138" r="44"/>
+            </clipPath>
+            <clipPath id="clip-n5">
+              <circle cx="714" cy="248" r="44"/>
+            </clipPath>
+            <clipPath id="clip-n9">
+              <circle cx="1342" cy="155" r="44"/>
+            </clipPath>
+          </defs>
+
+          <!-- Scribbly connecting path — drawn first so circles sit on top -->
+          <path id="roadmapPath" class="rm-path"
+            d="M 90,168
+               C 65,72 158,22 178,238
+               C 198,445 228,318 240,348
+               C 252,378 296,448 344,52
+               C 390,-28 398,98 395,138
+               C 392,172 428,52 484,272
+               C 538,462 558,396 558,372
+               C 558,348 596,182 656,214
+               C 714,244 714,264 714,248
+               C 714,230 762,46 812,204
+               C 858,354 872,392 872,368
+               C 872,344 918,450 966,258
+               C 1012,76 1028,106 1028,132
+               C 1028,152 1074,28 1118,248
+               C 1162,448 1184,412 1184,376
+               C 1184,342 1232,162 1296,118
+               C 1356,78 1342,140 1342,155"/>
+
+          <!-- N1: Book Journey -->
+          <g class="rm-node" data-idx="0">
+            <circle cx="90" cy="168" r="44" fill="#FF6B6B"/>
+            <circle cx="90" cy="168" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="90" y="226" class="rm-title">BOOK JOURNEY</text>
+            <text x="90" y="241" class="rm-sub">Meal plan</text>
+            <text x="90" y="256" class="rm-sub">Duration</text>
+            <text x="90" y="271" class="rm-sub">Interests</text>
+          </g>
+
+          <!-- N2: Check in -->
+          <g class="rm-node" data-idx="1">
+            <image href="Images/0064/Image11_0001111.jpg" x="196" y="304" width="88" height="88" clip-path="url(#clip-n2)" preserveAspectRatio="xMidYMid slice"/>
+            <circle cx="240" cy="348" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="240" y="406" class="rm-title">CHECK IN AT HUB</text>
+            <text x="240" y="421" class="rm-sub">Collect food</text>
+            <text x="240" y="436" class="rm-sub">Safety induction</text>
+            <text x="240" y="451" class="rm-sub">Settle in camper</text>
+          </g>
+
+          <!-- N3: Take-off -->
+          <g class="rm-node" data-idx="2">
+            <image href="Images/0064/LENA FLY 011.jpg" x="351" y="94" width="88" height="88" clip-path="url(#clip-n3)" preserveAspectRatio="xMidYMid slice"/>
+            <circle cx="395" cy="138" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="395" y="196" class="rm-title">TAKE-OFF</text>
+            <text x="395" y="211" class="rm-sub">Aerial viewing</text>
+            <text x="395" y="226" class="rm-sub">Slow speed</text>
+          </g>
+
+          <!-- N4: Drop-off -->
+          <g class="rm-node" data-idx="3">
+            <circle cx="558" cy="372" r="44" fill="#A8E6CF"/>
+            <circle cx="558" cy="372" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="558" y="430" class="rm-title">DROP-OFF</text>
+            <text x="558" y="445" class="rm-sub">Rising platform</text>
+            <text x="558" y="460" class="rm-sub">Interactive pod</text>
+            <text x="558" y="475" class="rm-sub">Grill</text>
+          </g>
+
+          <!-- N5: EVTOL Detaches -->
+          <g class="rm-node" data-idx="4">
+            <image href="Images/0064/Image113.jpg" x="670" y="204" width="88" height="88" clip-path="url(#clip-n5)" preserveAspectRatio="xMidYMid slice"/>
+            <circle cx="714" cy="248" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="714" y="306" class="rm-title">EVTOL DETACHES</text>
+            <text x="714" y="321" class="rm-sub">Pod remains on site</text>
+          </g>
+
+          <!-- N6: Pick up pod -->
+          <g class="rm-node" data-idx="5">
+            <circle cx="872" cy="368" r="44" fill="#FF8B94"/>
+            <circle cx="872" cy="368" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="872" y="426" class="rm-title">PICK UP ANOTHER POD</text>
+            <text x="872" y="441" class="rm-sub">Hub for recharging</text>
+          </g>
+
+          <!-- N7: Return to Hub -->
+          <g class="rm-node" data-idx="6">
+            <circle cx="1028" cy="132" r="44" fill="#A29BFE"/>
+            <circle cx="1028" cy="132" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="1028" y="190" class="rm-title">RETURN TO MAIN HUB</text>
+            <text x="1028" y="205" class="rm-sub">48 hours</text>
+          </g>
+
+          <!-- N8: Recharge Pod -->
+          <g class="rm-node" data-idx="7">
+            <circle cx="1184" cy="376" r="44" fill="#FDCB6E"/>
+            <circle cx="1184" cy="376" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="1184" y="434" class="rm-title">RECHARGE POD</text>
+            <text x="1184" y="449" class="rm-sub">Shower</text>
+            <text x="1184" y="464" class="rm-sub">Clean pod</text>
+            <text x="1184" y="479" class="rm-sub">Wash dirty gear</text>
+            <text x="1184" y="494" class="rm-sub">Eat &amp; socialise</text>
+            <text x="1184" y="509" class="rm-sub">Relax</text>
+          </g>
+
+          <!-- N9: Continue Journey -->
+          <g class="rm-node" data-idx="8">
+            <image href="Images/0064/LENA SUNSET 01.jpg" x="1298" y="111" width="88" height="88" clip-path="url(#clip-n9)" preserveAspectRatio="xMidYMid slice"/>
+            <circle cx="1342" cy="155" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <text x="1342" y="213" class="rm-title">CONTINUE JOURNEY</text>
+            <text x="1342" y="228" class="rm-sub">Next destination</text>
+          </g>
+
+        </svg>
+      </div>
+    </div>
+
+    <div class="proj-inner">
       <!-- EVTOL CAMPER — FORM INSPIRATION HERO -->
       <div class="form-hero">
         <img src="Images/skill development/storyboard collage (1).png" alt="Form inspiration renders for the Eblen-Kamper" class="form-hero-img">

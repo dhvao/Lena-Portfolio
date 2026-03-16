@@ -241,3 +241,54 @@ function animateModel(id, speed, swing, phi, direction) {
 animateModel('mv-product-01', 0.45, 38, 75,  1);
 animateModel('mv-product-02', 0.75, 30, 80, -1);
 animateModel('mv-product-03', 0.60, 45, 70,  1);
+
+/* ── Passenger Journey Roadmap ───────────────────── */
+(function () {
+  const svg  = document.getElementById('roadmapSvg');
+  if (!svg) return;
+
+  const path  = document.getElementById('roadmapPath');
+  const nodes = svg.querySelectorAll('.rm-node');
+
+  // Waypoints: fraction of path drawn when each node should appear
+  const waypoints = [0, 0.125, 0.25, 0.375, 0.50, 0.625, 0.75, 0.875, 1.0];
+  const shown = new Array(nodes.length).fill(false);
+  let started = false;
+
+  function easeInOut(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  }
+
+  function run() {
+    if (started) return;
+    started = true;
+
+    const total    = path.getTotalLength();
+    const duration = 4800;
+    path.style.strokeDasharray  = total;
+    path.style.strokeDashoffset = total;
+
+    let start = null;
+    function frame(now) {
+      if (!start) start = now;
+      const raw     = Math.min((now - start) / duration, 1);
+      const eased   = easeInOut(raw);
+
+      path.style.strokeDashoffset = total * (1 - eased);
+
+      waypoints.forEach((wp, i) => {
+        if (!shown[i] && eased >= wp) {
+          shown[i] = true;
+          nodes[i].classList.add('visible');
+        }
+      });
+
+      if (raw < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) run(); });
+  }, { threshold: 0.15 }).observe(svg);
+}());

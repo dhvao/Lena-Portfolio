@@ -1168,7 +1168,7 @@ ul { list-style: none; }
 
 /* EVTOL — wildlife impact panel */
 .wildlife-panel {
-  margin: 1.5rem 0 0;
+  margin: 1.5rem 0 3rem;
   /* Green to blue/grey fade similar to EVTOL hero */
   background: linear-gradient(to bottom, #5b6f4f 0%, #3f4c59 55%, #2a333c 100%);
   color: #ffffff;
@@ -1196,6 +1196,7 @@ ul { list-style: none; }
   text-transform: uppercase;
   text-align: center;
   margin: 1.1rem auto 0.25rem;
+  transform: translateX(12px);
   max-width: 420px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.65);
 }
@@ -1220,11 +1221,12 @@ ul { list-style: none; }
   align-items: center;
   gap: 0.65rem;
   text-align: center;
+  margin-top: -1.5rem;
 }
 
 .wildlife-icon {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
 }
 
@@ -1293,26 +1295,85 @@ ul { list-style: none; }
   object-position: left center;
 }
 
-/* Passenger journey strip under STORY */
-.journey-block {
-  margin: 2rem 0 0;
+/* ── Passenger Journey Roadmap ───────────────────── */
+/* ── Passenger Journey SVG Roadmap ───────────────── */
+.journey-roadmap {
+  margin: 2rem 0 3rem;
+  overflow: hidden;
 }
 
-.journey-img {
+.roadmap-title {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  font-weight: 600;
+  text-align: center;
+  padding: 1.5rem 0 0;
+  margin: 0;
+}
+
+.roadmap-svg-wrap {
+  width: 60%;
+  margin: 1rem auto 0;
+  overflow: hidden;
+  background: #1a1f2e;
+  padding: 0 0 2rem;
+  border-radius: 98px;
+}
+
+#roadmapSvg {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.journey-heading {
-  font-family: var(--font-display);
+/* Scribbly path */
+.rm-path {
+  fill: none;
+  stroke: rgba(255,255,255,0.5);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Step number */
+.rm-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
   font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: 0.36em;
-  text-transform: uppercase;
-  color: #000000;
-  text-align: center;
-  margin-bottom: 0.8rem;
+  fill: #ffffff;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  letter-spacing: 1px;
+}
+
+/* Step title */
+.rm-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  fill: #ffffff;
+  text-anchor: middle;
+  letter-spacing: 2px;
+}
+
+/* Sub-items */
+.rm-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  fill: rgba(255,255,255,0.75);
+  text-anchor: middle;
+  letter-spacing: 0.5px;
+}
+
+/* Nodes hidden until animated in */
+.rm-node {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.rm-node.visible {
+  opacity: 1;
 }
 
 /* Form inspiration hero under passenger journey */
