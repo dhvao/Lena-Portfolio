@@ -816,21 +816,23 @@ ul { list-style: none; }
 ══════════════════════════════════════════════════ */
 .learn-intro-box {
   background: #1c3557;
-  padding: 2rem var(--px);
+  padding: 2rem 0;
   margin: 0.75rem 0 2rem;
 }
 
+.learn-intro-box .proj-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .learn-intro-text {
-  max-width: 680px;
-  margin: 0 auto 0.75rem;
+  margin-bottom: 0.75rem;
   font-size: 0.8rem;
   color: #ffffff;
   line-height: 1.7;
 }
 
 .learn-intro-list {
-  max-width: 680px;
-  margin: 0 auto;
   padding: 0 0 0 1.4rem;
   list-style: disc;
   display: flex;
