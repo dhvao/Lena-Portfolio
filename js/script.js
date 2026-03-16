@@ -148,28 +148,51 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
 /* ── Product gallery lightbox ────────────────────── */
 (function () {
   const overlay  = document.getElementById('gallery-overlay');
-  const img      = document.getElementById('gallery-img');
-  const counter  = overlay.querySelector('.gallery-counter');
+  const content  = document.getElementById('gallery-content');
   const closeBtn = overlay.querySelector('.gallery-close');
-  const prevBtn  = overlay.querySelector('.gallery-prev');
-  const nextBtn  = overlay.querySelector('.gallery-next');
 
-  let images  = [];
-  let current = 0;
+  function open(sections) {
+    content.innerHTML = '';
 
-  function show(index) {
-    current = (index + images.length) % images.length;
-    img.src = images[current];
-    counter.textContent = `${current + 1} / ${images.length}`;
-    prevBtn.style.display = images.length > 1 ? '' : 'none';
-    nextBtn.style.display = images.length > 1 ? '' : 'none';
-  }
+    // Tab bar
+    const tabs = document.createElement('div');
+    tabs.className = 'gallery-tabs';
+    sections.forEach((section, i) => {
+      const tab = document.createElement('button');
+      tab.className = 'gallery-tab' + (i === 0 ? ' is-active' : '');
+      tab.textContent = section.label;
+      tab.addEventListener('click', () => showSection(i));
+      tabs.appendChild(tab);
+    });
+    content.appendChild(tabs);
 
-  function open(srcs) {
-    images = srcs;
-    show(0);
+    // Section panels
+    sections.forEach((section, i) => {
+      const panel = document.createElement('div');
+      panel.className = 'gallery-panel' + (i === 0 ? ' is-active' : '');
+
+      const grid = document.createElement('div');
+      grid.className = 'gallery-collage';
+      section.images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = section.label;
+        grid.appendChild(img);
+      });
+      panel.appendChild(grid);
+      content.appendChild(panel);
+    });
+
     overlay.classList.add('is-open');
     overlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function showSection(index) {
+    content.querySelectorAll('.gallery-tab').forEach((t, i) =>
+      t.classList.toggle('is-active', i === index));
+    content.querySelectorAll('.gallery-panel').forEach((p, i) =>
+      p.classList.toggle('is-active', i === index));
+    overlay.querySelector('.gallery-scroll').scrollTop = 0;
   }
 
   function close() {
@@ -179,41 +202,39 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
 
   document.querySelectorAll('.showcase-cta[data-gallery]').forEach(btn => {
     btn.addEventListener('click', () => {
-      const srcs = btn.dataset.gallery.split(',').map(s => s.trim()).filter(Boolean);
-      if (srcs.length) open(srcs);
+      const raw = btn.dataset.gallery.trim();
+      if (!raw) return;
+      try {
+        const sections = JSON.parse(raw);
+        open(sections);
+      } catch (e) {}
     });
   });
 
   closeBtn.addEventListener('click', close);
-  prevBtn.addEventListener('click', () => show(current - 1));
-  nextBtn.addEventListener('click', () => show(current + 1));
   overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
   document.addEventListener('keydown', e => {
-    if (!overlay.classList.contains('is-open')) return;
     if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft')  show(current - 1);
-    if (e.key === 'ArrowRight') show(current + 1);
   });
 }());
 
 /* ── 3D model — oscillating rotation (no full 360) ── */
-(function () {
-  const mv = document.getElementById('mv-product-01');
+function animateModel(id, speed, swing, phi, direction) {
+  const mv = document.getElementById(id);
   if (!mv) return;
-
-  // Wait for the model to load before animating
   mv.addEventListener('load', () => {
     let startTime = null;
-    const swingDeg = 40; // degrees either side of centre
-
     function tick(now) {
       if (!startTime) startTime = now;
       const t = (now - startTime) / 1000;
-      const theta = Math.sin(t * 0.55) * swingDeg;
-      mv.cameraOrbit = `${theta}deg 75deg auto`;
+      const theta = Math.sin(t * speed) * swing * direction;
+      mv.cameraOrbit = `${theta}deg ${phi}deg auto`;
       requestAnimationFrame(tick);
     }
-
     requestAnimationFrame(tick);
   });
-}());
+}
+
+// id, speed, swing°, phi°, direction (1=normal, -1=reversed)
+animateModel('mv-product-01', 0.45, 38, 75,  1);
+animateModel('mv-product-02', 0.75, 30, 80, -1);

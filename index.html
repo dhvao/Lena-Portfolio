@@ -184,31 +184,31 @@
         <div class="sc-viewport">
           <div class="sc-track">
             <div class="sc-slide active">
-              <img src="Images/skill development/Screenshot 2026-03-13 141758.png" alt="Sewing machine">
+              <img src="Images/skill development/own design/71613179837__65AE876D-A07B-4719-95B5-D0E05E3FB168.jpg" alt="Line control">
               <div class="sc-caption-wrap">
                 <p class="sc-title">Line control</p>
                 <p class="sc-sub">Getting to know the machinery</p>
               </div>
             </div>
             <div class="sc-slide">
-              <img src="Images/skill development/Screenshot 2026-03-13 141836.png" alt="Leather pouch development">
+              <img src="Images/skill development/own design/IMG_4315.jpg" alt="Saddle leather work">
               <div class="sc-caption-wrap">
-                <p class="sc-title">Leather pouch development</p>
-                <p class="sc-sub">First development project — leather pouch for my headphones</p>
+                <p class="sc-title">Working with saddle leather</p>
+                <p class="sc-sub">Sunglass case and Belt</p>
               </div>
             </div>
             <div class="sc-slide">
-              <img src="Images/skill development/Screenshot 2026-03-13 141908.png" alt="Saddle leather work">
+              <img src="Images/skill development/own design/IMG_4421.jpg" alt="Leather pouch development">
               <div class="sc-caption-wrap">
-                <p class="sc-title">Saddle leather work</p>
-                <p class="sc-sub">Working with saddle leather — Sunglasses case and belt</p>
+                <p class="sc-title">First development project</p>
+                <p class="sc-sub">Leather pouch for my headphones</p>
               </div>
             </div>
             <div class="sc-slide">
-              <img src="Images/skill development/Screenshot 2026-03-13 141920.png" alt="Seat cover pattern">
+              <img src="Images/skill development/own design/IMG_4321.jpg" alt="Seat cover pattern">
               <div class="sc-caption-wrap">
-                <p class="sc-title">Seat cover pattern</p>
-                <p class="sc-sub">Creating my own seat cover pattern — Full size seat cushion</p>
+                <p class="sc-title">Creating my own seat cover pattern</p>
+                <p class="sc-sub">Full size seat cushion</p>
               </div>
             </div>
           </div>
@@ -240,12 +240,19 @@
               style="width:100%;height:100%;background:transparent;"
             ></model-viewer>
           </div>
-          <button class="showcase-cta" data-gallery="Images/skill development/leather/Screenshot 2026-03-13 145545.png,Images/skill development/leather/Screenshot 2026-03-13 145556.png">Open Gallery</button>
+          <button class="showcase-cta" data-gallery='[{"label":"Case","images":["Images/skill development/leather/case/DSCF1104.jpg","Images/skill development/leather/case/DSCF1141.jpg","Images/skill development/leather/case/DSCF1144.jpg","Images/skill development/leather/case/DSCF1152.jpg"]},{"label":"Pouch","images":["Images/skill development/leather/pouch/DSCF1185.jpg","Images/skill development/leather/pouch/DSCF1190.jpg","Images/skill development/leather/pouch/DSCF1188.jpg","Images/skill development/leather/pouch/DSCF1090.jpg","Images/skill development/leather/pouch/DSCF1087.jpg"]},{"label":"Belt","images":["Images/skill development/leather/belt/DSCF1021.jpg","Images/skill development/leather/belt/DSCF1168.jpg","Images/skill development/leather/belt/DSCF1177.jpg","Images/skill development/leather/belt/DSCF1016.jpg","Images/skill development/leather/belt/DSCF1155.jpg"]}]'>Open Gallery</button>
         </div>
 
         <div class="showcase-item">
-          <div class="showcase-viewer-wrap showcase-placeholder">
-            <span>02</span>
+          <div class="showcase-viewer-wrap">
+            <model-viewer
+              id="mv-product-02"
+              src="Images/3d/base_basic_shadeq.glb"
+              alt="3D model — Product 02"
+              shadow-intensity="0.8"
+              exposure="1.2"
+              style="width:100%;height:100%;background:transparent;"
+            ></model-viewer>
           </div>
           <button class="showcase-cta" data-gallery="">Open Gallery</button>
         </div>
@@ -647,12 +654,9 @@
   <!-- ── Gallery lightbox overlay ── -->
   <div id="gallery-overlay" class="gallery-overlay" aria-hidden="true">
     <button class="gallery-close" aria-label="Close gallery">&#x2715;</button>
-    <button class="gallery-prev" aria-label="Previous">&#8592;</button>
-    <button class="gallery-next" aria-label="Next">&#8594;</button>
-    <div class="gallery-img-wrap">
-      <img id="gallery-img" src="" alt="">
+    <div class="gallery-scroll">
+      <div id="gallery-content" class="gallery-content"></div>
     </div>
-    <p class="gallery-counter"></p>
   </div>
 
   <script src="js/script.js"></script>
