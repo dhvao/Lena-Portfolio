@@ -1274,12 +1274,17 @@ ul { list-style: none; }
   margin: 0 auto;
 }
 
+/* Brand Research section */
+.pw-brand-section {
+  margin: 2rem 0 3rem;
+}
+
 /* Brand Research heading */
 .pw-brand-heading {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   text-align: center;
   margin: 0 0 1.5rem;
@@ -1287,7 +1292,7 @@ ul { list-style: none; }
 
 /* Mind map SVG */
 .pw-mindmap-wrap {
-  margin: 0 0 3rem;
+  margin: 0;
   overflow-x: auto;
 }
 
@@ -1304,7 +1309,7 @@ ul { list-style: none; }
 
 @keyframes mm-pulse {
   0%, 100% { stroke-width: 2;   opacity: 1; }
-  50%       { stroke-width: 3.2; opacity: 0.7; }
+  50%       { stroke-width: 3.5; opacity: 0.6; }
 }
 
 .mm-center-label {
@@ -1321,12 +1326,13 @@ ul { list-style: none; }
 }
 
 .mm-node ellipse {
-  transition: stroke-width 0.3s ease;
+  transition: stroke-width 0.3s ease, filter 0.3s ease;
 }
 
 .mm-node:hover ellipse {
   stroke-width: 2.2;
-  filter: url(#mm-glow);
+  stroke: #d4a030;
+  filter: url(#mm-glow-soft);
 }
 
 .mm-label {

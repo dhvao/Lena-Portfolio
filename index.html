@@ -467,74 +467,96 @@
       </div>
 
       <!-- ── BRAND RESEARCH ───────────────────────── -->
-      <h3 class="pw-brand-heading">BRAND RESEARCH</h3>
+      <div class="pw-brand-section">
+        <h3 class="pw-brand-heading">BRAND RESEARCH</h3>
 
-      <div class="pw-mindmap-wrap" id="brandMap">
-        <svg viewBox="0 0 1000 490" xmlns="http://www.w3.org/2000/svg" class="pw-mindmap" id="mmSvg">
-          <defs>
-            <filter id="mm-glow" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="6" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fffaf2"/>
-              <stop offset="100%" stop-color="#f0e6cc"/>
-            </radialGradient>
-            <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#f5e9cc"/>
-              <stop offset="100%" stop-color="#dfc07a"/>
-            </radialGradient>
-          </defs>
+        <div class="pw-mindmap-wrap" id="brandMap">
+          <svg viewBox="0 0 1000 490" xmlns="http://www.w3.org/2000/svg" class="pw-mindmap" id="mmSvg">
+            <defs>
+              <filter id="mm-glow-soft" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="mm-glow-strong" x="-80%" y="-80%" width="260%" height="260%">
+                <feGaussianBlur stdDeviation="11" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fffaf2"/>
+                <stop offset="100%" stop-color="#f0e6cc"/>
+              </radialGradient>
+              <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f5e9cc"/>
+                <stop offset="100%" stop-color="#dfc07a"/>
+              </radialGradient>
+            </defs>
 
-          <!-- connector lines — x2/y2 updated live by JS -->
-          <line class="mm-connector" id="mc-0" x1="500" y1="255" x2="500" y2="70"  stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
-          <line class="mm-connector" id="mc-1" x1="500" y1="255" x2="645" y2="140" stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
-          <line class="mm-connector" id="mc-2" x1="500" y1="255" x2="680" y2="296" stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
-          <line class="mm-connector" id="mc-3" x1="500" y1="255" x2="577" y2="423" stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
-          <line class="mm-connector" id="mc-4" x1="500" y1="255" x2="423" y2="423" stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
-          <line class="mm-connector" id="mc-5" x1="500" y1="255" x2="320" y2="296" stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
-          <line class="mm-connector" id="mc-6" x1="500" y1="255" x2="355" y2="140" stroke="#A8751A" stroke-width="1.1" opacity="0.6"/>
+            <!-- Connector lines -->
+            <line class="mm-connector" id="mc-0" x1="500" y1="255" x2="500" y2="70"  stroke="#c4871e" stroke-width="1" opacity="0.55"/>
+            <line class="mm-connector" id="mc-1" x1="500" y1="255" x2="645" y2="140" stroke="#c4871e" stroke-width="1" opacity="0.55"/>
+            <line class="mm-connector" id="mc-2" x1="500" y1="255" x2="680" y2="296" stroke="#c4871e" stroke-width="1" opacity="0.55"/>
+            <line class="mm-connector" id="mc-3" x1="500" y1="255" x2="577" y2="423" stroke="#c4871e" stroke-width="1" opacity="0.55"/>
+            <line class="mm-connector" id="mc-4" x1="500" y1="255" x2="423" y2="423" stroke="#c4871e" stroke-width="1" opacity="0.55"/>
+            <line class="mm-connector" id="mc-5" x1="500" y1="255" x2="320" y2="296" stroke="#c4871e" stroke-width="1" opacity="0.55"/>
+            <line class="mm-connector" id="mc-6" x1="500" y1="255" x2="355" y2="140" stroke="#c4871e" stroke-width="1" opacity="0.55"/>
 
-          <!-- centre node -->
-          <g class="mm-center-node" transform="translate(500,255)">
-            <ellipse class="mm-center-ring" rx="66" ry="32" fill="url(#centerGrad)" stroke="#A8751A" stroke-width="2"/>
-            <text class="mm-center-label" text-anchor="middle" dy="6">"Clarity"</text>
-          </g>
+            <!-- Pulse rings expanding from centre -->
+            <g transform="translate(500,255)" style="pointer-events:none">
+              <ellipse rx="66" ry="32" fill="none" stroke="#c4871e" stroke-width="1.5" opacity="0">
+                <animate attributeName="rx" from="66" to="150" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="ry" from="32" to="72" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" from="0.6" to="0" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="stroke-width" from="1.5" to="0.2" dur="3s" repeatCount="indefinite"/>
+              </ellipse>
+              <ellipse rx="66" ry="32" fill="none" stroke="#c4871e" stroke-width="1.5" opacity="0">
+                <animate attributeName="rx" from="66" to="150" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                <animate attributeName="ry" from="32" to="72" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" from="0.6" to="0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                <animate attributeName="stroke-width" from="1.5" to="0.2" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+              </ellipse>
+            </g>
 
-          <!-- floating term nodes — JS reads data-bx/data-by as base position -->
-          <g class="mm-node" data-bx="500" data-by="70" data-i="0">
-            <ellipse rx="56" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle" dy="5">"Timeless"</text>
-          </g>
-          <g class="mm-node" data-bx="645" data-by="140" data-i="1">
-            <ellipse rx="72" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle" dy="5">"Quiet disruptions"</text>
-          </g>
-          <g class="mm-node" data-bx="680" data-by="296" data-i="2">
-            <ellipse rx="90" ry="36" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle">
-              <tspan x="0" dy="-4">"Everything reduced</tspan>
-              <tspan x="0" dy="17">to the essential"</tspan>
-            </text>
-          </g>
-          <g class="mm-node" data-bx="577" data-by="423" data-i="3">
-            <ellipse rx="74" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle" dy="5">"The radical next"</text>
-          </g>
-          <g class="mm-node" data-bx="423" data-by="423" data-i="4">
-            <ellipse rx="56" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle" dy="5">"Titanium"</text>
-          </g>
-          <g class="mm-node" data-bx="320" data-by="296" data-i="5">
-            <ellipse rx="77" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle" dy="5">"Radical simplicity"</text>
-          </g>
-          <g class="mm-node" data-bx="355" data-by="140" data-i="6">
-            <ellipse rx="77" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.3"/>
-            <text class="mm-label" text-anchor="middle" dy="5">"Technical elegance"</text>
-          </g>
+            <!-- Centre node -->
+            <g class="mm-center-node" transform="translate(500,255)">
+              <ellipse class="mm-center-ring" rx="66" ry="32" fill="url(#centerGrad)" stroke="#d4a030" stroke-width="2" filter="url(#mm-glow-soft)"/>
+              <text class="mm-center-label" text-anchor="middle" dy="6">"Clarity"</text>
+            </g>
 
-        </svg>
+            <!-- Floating term nodes -->
+            <g class="mm-node" data-bx="500" data-by="70" data-i="0">
+              <ellipse rx="56" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle" dy="5">"Timeless"</text>
+            </g>
+            <g class="mm-node" data-bx="645" data-by="140" data-i="1">
+              <ellipse rx="72" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle" dy="5">"Quiet disruptions"</text>
+            </g>
+            <g class="mm-node" data-bx="680" data-by="296" data-i="2">
+              <ellipse rx="90" ry="36" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle">
+                <tspan x="0" dy="-4">"Everything reduced</tspan>
+                <tspan x="0" dy="17">to the essential"</tspan>
+              </text>
+            </g>
+            <g class="mm-node" data-bx="577" data-by="423" data-i="3">
+              <ellipse rx="74" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle" dy="5">"The radical next"</text>
+            </g>
+            <g class="mm-node" data-bx="423" data-by="423" data-i="4">
+              <ellipse rx="56" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle" dy="5">"Titanium"</text>
+            </g>
+            <g class="mm-node" data-bx="320" data-by="296" data-i="5">
+              <ellipse rx="77" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle" dy="5">"Radical simplicity"</text>
+            </g>
+            <g class="mm-node" data-bx="355" data-by="140" data-i="6">
+              <ellipse rx="77" ry="27" fill="url(#nodeGrad)" stroke="#A8751A" stroke-width="1.4"/>
+              <text class="mm-label" text-anchor="middle" dy="5">"Technical elegance"</text>
+            </g>
+
+          </svg>
+        </div>
       </div>
 
     </div>
