@@ -144,3 +144,76 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
   window.addEventListener('resize', updateTrack);
   updateTrack();
 });
+
+/* ── Product gallery lightbox ────────────────────── */
+(function () {
+  const overlay  = document.getElementById('gallery-overlay');
+  const img      = document.getElementById('gallery-img');
+  const counter  = overlay.querySelector('.gallery-counter');
+  const closeBtn = overlay.querySelector('.gallery-close');
+  const prevBtn  = overlay.querySelector('.gallery-prev');
+  const nextBtn  = overlay.querySelector('.gallery-next');
+
+  let images  = [];
+  let current = 0;
+
+  function show(index) {
+    current = (index + images.length) % images.length;
+    img.src = images[current];
+    counter.textContent = `${current + 1} / ${images.length}`;
+    prevBtn.style.display = images.length > 1 ? '' : 'none';
+    nextBtn.style.display = images.length > 1 ? '' : 'none';
+  }
+
+  function open(srcs) {
+    images = srcs;
+    show(0);
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function close() {
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+
+  document.querySelectorAll('.showcase-cta[data-gallery]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const srcs = btn.dataset.gallery.split(',').map(s => s.trim()).filter(Boolean);
+      if (srcs.length) open(srcs);
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+  prevBtn.addEventListener('click', () => show(current - 1));
+  nextBtn.addEventListener('click', () => show(current + 1));
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft')  show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+}());
+
+/* ── 3D model — oscillating rotation (no full 360) ── */
+(function () {
+  const mv = document.getElementById('mv-product-01');
+  if (!mv) return;
+
+  // Wait for the model to load before animating
+  mv.addEventListener('load', () => {
+    let startTime = null;
+    const swingDeg = 40; // degrees either side of centre
+
+    function tick(now) {
+      if (!startTime) startTime = now;
+      const t = (now - startTime) / 1000;
+      const theta = Math.sin(t * 0.55) * swingDeg;
+      mv.cameraOrbit = `${theta}deg 75deg auto`;
+      requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  });
+}());

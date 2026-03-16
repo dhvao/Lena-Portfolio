@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -79,10 +80,10 @@
           <li><span>Creative Design</span></li>
           <li><span>Sketching</span></li>
           <li><span>Procreate</span></li>
-          <li><span>Alias</span></li>
-          <li><span>Keyshot</span></li>
+          <li><span>Blender</span></li>
+          <li><span>KeyShot</span></li>
           <li><span>Twinmotion</span></li>
-          <li><span>Illustration</span></li>
+          <li><span>Illustrator</span></li>
           <li><span>Trim Development</span></li>
         </ul>
       </div>
@@ -225,19 +226,37 @@
       <!-- ── MY PRODUCTS ──────────────────────────── -->
       <h3 class="proj-sub-heading">MY PRODUCTS</h3>
 
-      <div class="leather-grid">
-        <div class="leather-col">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145424.png" alt="Headphone case">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145506.png" alt="Headphones on case">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145545.png" alt="Glasses case closed">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145612.png" alt="Belt buckle detail">
+      <!-- 3D showcase row -->
+      <div class="showcase-grid">
+
+        <div class="showcase-item">
+          <div class="showcase-viewer-wrap">
+            <model-viewer
+              id="mv-product-01"
+              src="Images/3d/base_basic_shaded.glb"
+              alt="3D model — Product 01"
+              shadow-intensity="0.8"
+              exposure="1.2"
+              style="width:100%;height:100%;background:transparent;"
+            ></model-viewer>
+          </div>
+          <button class="showcase-cta" data-gallery="Images/skill development/leather/Screenshot 2026-03-13 145545.png,Images/skill development/leather/Screenshot 2026-03-13 145556.png">Open Gallery</button>
         </div>
-        <div class="leather-col">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145452.png" alt="Belt and glasses case">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145623.png" alt="Belt coiled">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145519.png" alt="Case side view">
-          <img src="Images/skill development/leather/Screenshot 2026-03-13 145556.png" alt="Glasses case angled">
+
+        <div class="showcase-item">
+          <div class="showcase-viewer-wrap showcase-placeholder">
+            <span>02</span>
+          </div>
+          <button class="showcase-cta" data-gallery="">Open Gallery</button>
         </div>
+
+        <div class="showcase-item">
+          <div class="showcase-viewer-wrap showcase-placeholder">
+            <span>03</span>
+          </div>
+          <button class="showcase-cta" data-gallery="">Open Gallery</button>
+        </div>
+
       </div>
 
       <!-- ── SEWING MY OWN DESIGN ────────────────── -->
@@ -624,6 +643,17 @@
     <p class="footer-sub">Portfolio · 2026</p>
   </footer>
 
+
+  <!-- ── Gallery lightbox overlay ── -->
+  <div id="gallery-overlay" class="gallery-overlay" aria-hidden="true">
+    <button class="gallery-close" aria-label="Close gallery">&#x2715;</button>
+    <button class="gallery-prev" aria-label="Previous">&#8592;</button>
+    <button class="gallery-next" aria-label="Next">&#8594;</button>
+    <div class="gallery-img-wrap">
+      <img id="gallery-img" src="" alt="">
+    </div>
+    <p class="gallery-counter"></p>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
