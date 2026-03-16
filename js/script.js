@@ -240,3 +240,4 @@ function animateModel(id, speed, swing, phi, direction) {
 // id, speed, swing°, phi°, direction (1=normal, -1=reversed)
 animateModel('mv-product-01', 0.45, 38, 75,  1);
 animateModel('mv-product-02', 0.75, 30, 80, -1);
+animateModel('mv-product-03', 0.60, 45, 70,  1);
