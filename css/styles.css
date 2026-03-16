@@ -1161,13 +1161,9 @@ ul { list-style: none; }
   margin: 2.2rem 0 1.2rem;
 }
 
-/* Concept gallery — 2-column layout, left wider (matches Canva) */
+/* Concept gallery — single formatted image */
 .concept-gallery {
   margin: 0 0 2rem;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 0.5rem;
   align-items: start;
 }
 
@@ -1241,7 +1237,11 @@ ul { list-style: none; }
   gap: 0;
 }
 
-.interior-dev-pair img:last-child {
+.interior-dev-pair img:nth-child(2) {
+  margin-top: -42%;
+}
+
+.interior-dev-pair img:nth-child(3) {
   margin-top: -30%;
 }
 

@@ -39,7 +39,7 @@ projectSections.forEach(section => observer.observe(section));
 
 /* ── Subtle fade-in on scroll for project sections ─ */
 const fadeEls = document.querySelectorAll(
-  '.proj-section, .proj-sub-heading, .proj-main-title, .proj-section-heading'
+  '.proj-sub-heading, .proj-main-title, .proj-section-heading'
 );
 
 const fadeObserver = new IntersectionObserver(
