@@ -1228,6 +1228,118 @@ ul { list-style: none; }
 }
 
 /* ══════════════════════════════════════════════════
+   PROJECT 03 — PERSONAL WORK
+══════════════════════════════════════════════════ */
+
+/* Dark gradient hero banner */
+.pw-hero {
+  background: linear-gradient(to right, #000000 0%, #555555 55%, #d0d0d0 100%);
+  padding: 3.5rem var(--px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 2.5rem;
+}
+
+.pw-hero-content {
+  text-align: center;
+}
+
+.pw-hero-title {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.pw-hero-sub {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.pw-audi-logo {
+  width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Brand Research heading */
+.pw-brand-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+/* Mind map SVG */
+.pw-mindmap-wrap {
+  margin: 0 0 3rem;
+  overflow-x: auto;
+}
+
+.pw-mindmap {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Centre node pulse */
+.mm-center-ring {
+  animation: mm-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes mm-pulse {
+  0%, 100% { stroke-width: 2;   opacity: 1; }
+  50%       { stroke-width: 3.2; opacity: 0.7; }
+}
+
+.mm-center-label {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 17px;
+  fill: #1a1a1a;
+  pointer-events: none;
+}
+
+/* Floating term nodes */
+.mm-node {
+  cursor: default;
+}
+
+.mm-node ellipse {
+  transition: stroke-width 0.3s ease;
+}
+
+.mm-node:hover ellipse {
+  stroke-width: 2.2;
+  filter: url(#mm-glow);
+}
+
+.mm-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  fill: #2a2a2a;
+  pointer-events: none;
+  transition: fill 0.3s ease;
+}
+
+.mm-node:hover .mm-label {
+  fill: #A8751A;
+}
+
+/* ══════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════ */
 #footer {
