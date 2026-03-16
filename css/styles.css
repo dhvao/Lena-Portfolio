@@ -885,6 +885,24 @@ ul { list-style: none; }
   object-fit: contain;
 }
 
+/* Final project carousel — full width, large slides */
+.final-carousel {
+  margin: 1.5rem 0;
+}
+
+.final-carousel .sc-slide {
+  flex: 0 0 50%;
+}
+
+.final-carousel .sc-track {
+  gap: 4px;
+}
+
+.final-carousel .sc-slide img {
+  max-height: 1080px;
+  object-fit: contain;
+}
+
 /* ══════════════════════════════════════════════════
    LEAR — SEWING MY OWN DESIGN
 ══════════════════════════════════════════════════ */
