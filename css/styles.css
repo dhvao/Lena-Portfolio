@@ -1170,7 +1170,7 @@ ul { list-style: none; }
   display: block;
 }
 
-/* 2×3 CMF grid (2 columns, 3 rows) */
+/* 2×3 CMF grid (2 columns, 3 rows) — all cells equal size */
 .cmf-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1180,7 +1180,9 @@ ul { list-style: none; }
 
 .cmf-grid img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
