@@ -1133,6 +1133,85 @@ ul { list-style: none; }
   display: block;
 }
 
+/* ── INTERIOR DEVELOPMENT ──────────────────────── */
+.interior-dev-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 2.5rem 0 1rem;
+}
+
+.interior-dev-gallery {
+  margin: 1rem 0 1.5rem;
+}
+
+.interior-dev-hero {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.interior-dev-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.interior-dev-pair img:last-child {
+  margin-top: -30%;
+}
+
+.interior-dev-pair img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 2×3 CMF grid (2 columns, 3 rows) */
+.cmf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0 2rem;
+}
+
+.cmf-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* PACKAGING sub-heading */
+.packaging-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2vw, 1.05rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 2rem 0 1rem;
+}
+
+/* packaging strip — 1 image per row */
+.packaging-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+}
+
+.packaging-strip img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .cmf-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 768px) {
   .concept-gallery {
     grid-template-columns: 1fr;
