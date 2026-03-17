@@ -943,22 +943,130 @@ ul { list-style: none; }
   object-fit: contain;
 }
 
-/* Final project carousel — full width, large slides */
-.final-carousel {
-  margin: 1.5rem 0;
+/* ── Depth (3D) carousel — Final Project ─────────── */
+.depth-carousel {
+  padding: 2rem 0 3rem;
+  overflow: visible;
 }
 
-.final-carousel .sc-slide {
-  flex: 0 0 50%;
+.dc-stage {
+  position: relative;
+  /*
+   * Portrait cards: width 35%, aspect-ratio 3:4
+   * Card height = 35% × (4/3) = 46.7% of stage width
+   * padding-bottom = 50% gives breathing room for side cards
+   */
+  height: 0;
+  padding-bottom: 43%;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
 }
 
-.final-carousel .sc-track {
-  gap: 4px;
+.dc-card {
+  position: absolute;
+  width: 28.9%;   /* 26.25% × 1.10 — 10% bigger */
+  aspect-ratio: 3 / 4;
+  left: 35.55%;   /* (100% - 28.9%) / 2 */
+  top: 50%;
+  /* margin-top = -(28.9% × 4/3 / 2) ≈ -19.3% of stage width */
+  margin-top: -19.3%;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.65s ease,
+    box-shadow 0.65s ease;
+  will-change: transform, opacity;
 }
 
-.final-carousel .sc-slide img {
-  max-height: 1080px;
-  object-fit: contain;
+.dc-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  pointer-events: none;
+}
+
+/* Centre card */
+.dc-card[data-pos="0"] {
+  transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.32);
+}
+
+/* Left peek */
+.dc-card[data-pos="-1"] {
+  transform: translateX(-64%) translateZ(-140px) rotateY(16deg) scale(0.80);
+  opacity: 0.42;
+  z-index: 1;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+}
+
+/* Right peek */
+.dc-card[data-pos="1"] {
+  transform: translateX(64%) translateZ(-140px) rotateY(-16deg) scale(0.80);
+  opacity: 0.42;
+  z-index: 1;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18);
+}
+
+/* Any card further away — hidden */
+.dc-card[data-pos="-2"],
+.dc-card[data-pos="2"] {
+  transform: translateX(0) translateZ(-300px) scale(0.5);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dc-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.dc-btn {
+  background: none;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dc-btn:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+.dc-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-border);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.dc-dot.is-active {
+  background: var(--gold);
+  transform: scale(1.35);
 }
 
 /* ══════════════════════════════════════════════════

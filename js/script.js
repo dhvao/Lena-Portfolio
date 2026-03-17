@@ -358,6 +358,53 @@ animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
   });
 }());
 
+/* ── Final Project depth carousel (3D) ───────────── */
+(function () {
+  const wrap = document.getElementById('finalCarousel');
+  if (!wrap) return;
+
+  const cards = Array.from(wrap.querySelectorAll('.dc-card'));
+  const dots  = Array.from(wrap.querySelectorAll('.dc-dot'));
+  const n     = cards.length;
+  let active  = 0;
+
+  function update() {
+    cards.forEach((card, i) => {
+      let pos = (i - active + n) % n;
+      if (pos > Math.floor(n / 2)) pos -= n;
+      card.dataset.pos = pos;
+    });
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
+  }
+
+  wrap.querySelector('.dc-btn--prev').addEventListener('click', () => {
+    active = (active - 1 + n) % n;
+    update();
+  });
+
+  wrap.querySelector('.dc-btn--next').addEventListener('click', () => {
+    active = (active + 1) % n;
+    update();
+  });
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => {
+    active = i;
+    update();
+  }));
+
+  // Click a side card to bring it to center
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      if (parseInt(card.dataset.pos) !== 0) {
+        active = i;
+        update();
+      }
+    });
+  });
+
+  update();
+}());
+
 /* ── Brand Research tree — scroll-in animation ─── */
 (function () {
   const wrap = document.getElementById('brandMap');
