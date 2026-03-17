@@ -798,9 +798,16 @@ ul { list-style: none; }
   margin: -1.2rem 0 2rem;
 }
 
+.belt-strip {
+  background: #111b2e;
+  padding: 2.5rem var(--px);
+  margin: 1.5rem 0;
+}
+
 .belt-feature {
   position: relative;
-  margin: 0 0 1.5rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
 }
 
 .belt-feature img {

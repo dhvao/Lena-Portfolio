@@ -113,36 +113,62 @@ fadeEls.forEach(el => {
   }
 }());
 
-/* ── Skills carousel ─────────────────────────────── */
+/* ── Skills carousel (infinite loop) ─────────────── */
 document.querySelectorAll('.skills-carousel').forEach(carousel => {
-  const viewport = carousel.querySelector('.sc-viewport');
-  const track    = carousel.querySelector('.sc-track');
-  const slides   = carousel.querySelectorAll('.sc-slide');
-  const dots     = carousel.querySelectorAll('.sc-dot');
-  const prev     = carousel.querySelector('.sc-btn--prev');
-  const next     = carousel.querySelector('.sc-btn--next');
-  const gap      = 16;
-  let current    = 0;
+  const viewport   = carousel.querySelector('.sc-viewport');
+  const track      = carousel.querySelector('.sc-track');
+  const realSlides = Array.from(carousel.querySelectorAll('.sc-slide'));
+  const dots       = carousel.querySelectorAll('.sc-dot');
+  const prev       = carousel.querySelector('.sc-btn--prev');
+  const next       = carousel.querySelector('.sc-btn--next');
+  const gap        = 16;
+  const count      = realSlides.length;
 
-  function updateTrack() {
-    const slideW  = slides[0].offsetWidth;
-    const vpW     = viewport.offsetWidth;
-    const offset  = -(current * (slideW + gap)) + (vpW - slideW) / 2;
-    track.style.transform = `translateX(${offset}px)`;
-    slides.forEach((s, i) => s.classList.toggle('active', i === current));
-    dots.forEach((d, i)   => d.classList.toggle('active', i === current));
+  // Clone last slide → prepend (left peek), clone first slide → append (right peek)
+  const cloneHead = realSlides[count - 1].cloneNode(true);
+  const cloneTail = realSlides[0].cloneNode(true);
+  cloneHead.classList.remove('active');
+  cloneTail.classList.remove('active');
+  track.insertBefore(cloneHead, realSlides[0]);
+  track.appendChild(cloneTail);
+
+  const allSlides = Array.from(track.querySelectorAll('.sc-slide'));
+  let current = 1; // index 1 = real first slide
+
+  function positionTrack(animate) {
+    const slideW = allSlides[0].offsetWidth;
+    const vpW    = viewport.offsetWidth;
+    const offset = -(current * (slideW + gap)) + (vpW - slideW) / 2;
+    if (!animate) {
+      track.style.transition = 'none';
+      track.style.transform  = `translateX(${offset}px)`;
+      track.offsetHeight; // force reflow
+      track.style.transition = '';
+    } else {
+      track.style.transform = `translateX(${offset}px)`;
+    }
+    const realIdx = current - 1;
+    realSlides.forEach((s, i) => s.classList.toggle('active', i === realIdx));
+    dots.forEach((d, i)       => d.classList.toggle('active', i === realIdx));
   }
 
   function goTo(n) {
-    current = (n + slides.length) % slides.length;
-    updateTrack();
+    current = n;
+    positionTrack(true);
   }
+
+  // After transition: if on a clone, jump silently to the real slide
+  track.addEventListener('transitionend', () => {
+    if (current === 0)         { current = count;     positionTrack(false); }
+    else if (current === count + 1) { current = 1;    positionTrack(false); }
+  });
 
   prev.addEventListener('click', () => goTo(current - 1));
   next.addEventListener('click', () => goTo(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-  window.addEventListener('resize', updateTrack);
-  updateTrack();
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i + 1)));
+  window.addEventListener('resize', () => positionTrack(false));
+
+  requestAnimationFrame(() => positionTrack(false));
 });
 
 /* ── Product gallery lightbox ────────────────────── */
