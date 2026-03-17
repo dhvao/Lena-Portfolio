@@ -241,6 +241,7 @@ function animateModel(id, speed, swing, phi, direction, thetaOffset = 0, radius 
 animateModel('mv-product-01', 0.45, 38, 75,  1);
 animateModel('mv-product-02', 0.75, 30, 80, -1);
 animateModel('mv-product-03', 0.60, 45, 70,  1);
+animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
 
 /* ── Passenger Journey Roadmap ───────────────────── */
 (function () {

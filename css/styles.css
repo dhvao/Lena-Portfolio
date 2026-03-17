@@ -642,6 +642,9 @@ ul { list-style: none; }
   border-top: 1px solid var(--gold-border);
 }
 
+#project-01 { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+#project-02 { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+
 .proj-section.alt-bg { background: var(--bg-alt); }
 
 
@@ -674,6 +677,8 @@ ul { list-style: none; }
 
 /* Main title block (e.g. "THE BELVEDERE") */
 .proj-title-block { margin-bottom: 2.5rem; }
+
+#project-03 .proj-title-block { text-align: center; }
 
 .proj-main-title {
   font-family: var(--font-display);
@@ -1066,27 +1071,33 @@ ul { list-style: none; }
   list-style: disc;
 }
 
+.learn-framed {
+  border: 1.5px solid var(--gold-border);
+  border-radius: 10px;
+  padding: 2rem;
+}
+
 .learn-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem 2.5rem;
-  margin: 0 0 2rem;
 }
 
 .learn-item h4 {
   font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
 }
 
 .learn-item p {
-  font-size: 0.72rem;
-  color: var(--gray);
-  line-height: 1.65;
+  font-size: 0.78rem;
+  color: #333333;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .learn-photo-span {
