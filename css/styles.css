@@ -1439,8 +1439,7 @@ ul { list-style: none; }
   min-width: 780px;
   margin: 1rem auto 0;
   overflow: hidden;
-  background: linear-gradient(rgba(10,15,30,0.55), rgba(10,15,30,0.55)),
-              url('../Images/project-02-evtol/roadmap/mountains.jpg') center/cover no-repeat;
+  background: #1b2a4a;
   padding: 0 0 2rem;
   border-radius: 98px;
 }
