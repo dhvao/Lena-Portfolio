@@ -746,12 +746,10 @@
 
     <!-- ── AUDI HERO BANNER ──────────────────────── -->
     <div class="pw-hero">
-      <div class="pw-hero-left">
-        <p class="pw-hero-eyebrow">Lena Eblenkamp · Personal Concept</p>
-        <h2 class="pw-hero-title">What Audi<br>means to me</h2>
+      <div class="pw-hero-center">
+        <h2 class="pw-hero-title">WHAT AUDI MEANS TO ME</h2>
         <div class="pw-hero-rule"></div>
-      </div>
-      <div class="pw-hero-right">
+        <p class="pw-hero-eyebrow">Lena Eblenkamp · Personal Concept</p>
         <img src="Images/project-03-personal/audi/audi-logo.png" alt="Audi" class="pw-audi-logo">
       </div>
     </div>
@@ -762,65 +760,65 @@
       <div class="pw-brand-section">
         <h3 class="pw-brand-heading">BRAND RESEARCH</h3>
 
-        <div class="pw-mindmap-wrap" id="brandMap">
-          <svg viewBox="0 0 1000 490" xmlns="http://www.w3.org/2000/svg" class="pw-mindmap" id="mmSvg">
-            <defs>
-              <filter id="mm-glow-red" x="-80%" y="-80%" width="260%" height="260%">
-                <feGaussianBlur stdDeviation="14" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <filter id="mm-glow-node" x="-40%" y="-80%" width="180%" height="260%">
-                <feGaussianBlur stdDeviation="7" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
+        <div class="pw-tree-wrap" id="brandMap">
+          <svg viewBox="0 0 1200 510" xmlns="http://www.w3.org/2000/svg" class="pw-tree" id="mmSvg">
 
-            <!-- Connectors — clean thick lines -->
-            <line class="mm-connector" id="mc-0" x1="500" y1="255" x2="500" y2="70"/>
-            <line class="mm-connector" id="mc-1" x1="500" y1="255" x2="645" y2="140"/>
-            <line class="mm-connector" id="mc-2" x1="500" y1="255" x2="680" y2="296"/>
-            <line class="mm-connector" id="mc-3" x1="500" y1="255" x2="577" y2="423"/>
-            <line class="mm-connector" id="mc-4" x1="500" y1="255" x2="423" y2="423"/>
-            <line class="mm-connector" id="mc-5" x1="500" y1="255" x2="320" y2="296"/>
-            <line class="mm-connector" id="mc-6" x1="500" y1="255" x2="355" y2="140"/>
+            <!-- Branches (drawn behind nodes) -->
+            <path class="tree-branch" style="animation-delay:0.05s" d="M600,79 C600,125 170,110 170,145"/>
+            <path class="tree-branch" style="animation-delay:0.2s"  d="M600,79 C600,210 170,240 170,270"/>
+            <path class="tree-branch" style="animation-delay:0.35s" d="M600,79 C600,310 170,365 170,395"/>
+            <path class="tree-branch" style="animation-delay:0.05s" d="M600,79 C600,125 1030,110 1030,145"/>
+            <path class="tree-branch" style="animation-delay:0.2s"  d="M600,79 C600,210 1030,240 1030,260"/>
+            <path class="tree-branch" style="animation-delay:0.35s" d="M600,79 C600,310 1030,365 1030,395"/>
+            <path class="tree-branch" style="animation-delay:0.25s" d="M600,79 C600,230 600,380 600,440"/>
 
-            <!-- Centre -->
-            <g class="mm-center-node" transform="translate(500,255)">
-              <circle r="64" fill="#BB0A21" filter="url(#mm-glow-red)"/>
-              <text class="mm-center-label" text-anchor="middle" dy="7">"Clarity"</text>
+            <!-- Center node -->
+            <g class="tree-center-node">
+              <rect x="520" y="35" width="160" height="44" rx="5" fill="#BB0A21"/>
+              <text x="600" y="62" text-anchor="middle" class="tree-center-text">"Clarity"</text>
             </g>
 
-            <!-- Nodes — bold pills -->
-            <g class="mm-node" data-bx="500" data-by="70" data-i="0">
-              <rect x="-70" y="-26" width="140" height="50" rx="25" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle" dy="8">"Timeless"</text>
+            <!-- "Timeless" -->
+            <g class="tree-node" style="animation-delay:0.5s">
+              <rect x="90" y="143" width="160" height="46" rx="4" class="tree-node-rect"/>
+              <text x="170" y="171" text-anchor="middle" class="tree-node-text">"Timeless"</text>
             </g>
-            <g class="mm-node" data-bx="645" data-by="140" data-i="1">
-              <rect x="-90" y="-26" width="180" height="50" rx="25" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle" dy="8">"Quiet disruptions"</text>
+
+            <!-- "Radical simplicity" -->
+            <g class="tree-node" style="animation-delay:0.62s">
+              <rect x="65" y="268" width="210" height="46" rx="4" class="tree-node-rect"/>
+              <text x="170" y="296" text-anchor="middle" class="tree-node-text">"Radical simplicity"</text>
             </g>
-            <g class="mm-node" data-bx="680" data-by="296" data-i="2">
-              <rect x="-105" y="-34" width="210" height="66" rx="18" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle">
-                <tspan x="0" dy="-2">"Everything reduced</tspan>
-                <tspan x="0" dy="22">to the essential"</tspan>
-              </text>
+
+            <!-- "Technical elegance" -->
+            <g class="tree-node" style="animation-delay:0.74s">
+              <rect x="65" y="393" width="210" height="46" rx="4" class="tree-node-rect"/>
+              <text x="170" y="421" text-anchor="middle" class="tree-node-text">"Technical elegance"</text>
             </g>
-            <g class="mm-node" data-bx="577" data-by="423" data-i="3">
-              <rect x="-90" y="-26" width="180" height="50" rx="25" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle" dy="8">"The radical next"</text>
+
+            <!-- "Quiet disruptions" -->
+            <g class="tree-node" style="animation-delay:0.5s">
+              <rect x="940" y="143" width="180" height="46" rx="4" class="tree-node-rect"/>
+              <text x="1030" y="171" text-anchor="middle" class="tree-node-text">"Quiet disruptions"</text>
             </g>
-            <g class="mm-node" data-bx="423" data-by="423" data-i="4">
-              <rect x="-70" y="-26" width="140" height="50" rx="25" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle" dy="8">"Titanium"</text>
+
+            <!-- "Everything reduced to the essential" -->
+            <g class="tree-node" style="animation-delay:0.62s">
+              <rect x="910" y="258" width="240" height="64" rx="4" class="tree-node-rect"/>
+              <text x="1030" y="284" text-anchor="middle" class="tree-node-text">"Everything reduced</text>
+              <text x="1030" y="307" text-anchor="middle" class="tree-node-text">to the essential"</text>
             </g>
-            <g class="mm-node" data-bx="320" data-by="296" data-i="5">
-              <rect x="-95" y="-26" width="190" height="50" rx="25" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle" dy="8">"Radical simplicity"</text>
+
+            <!-- "The radical next" -->
+            <g class="tree-node" style="animation-delay:0.74s">
+              <rect x="940" y="393" width="180" height="46" rx="4" class="tree-node-rect"/>
+              <text x="1030" y="421" text-anchor="middle" class="tree-node-text">"The radical next"</text>
             </g>
-            <g class="mm-node" data-bx="355" data-by="140" data-i="6">
-              <rect x="-100" y="-26" width="200" height="50" rx="25" fill="#161616" stroke="#ffffff" stroke-width="2"/>
-              <text class="mm-label" text-anchor="middle" dy="8">"Technical elegance"</text>
+
+            <!-- "Titanium" -->
+            <g class="tree-node" style="animation-delay:0.62s">
+              <rect x="515" y="438" width="170" height="46" rx="4" class="tree-node-rect"/>
+              <text x="600" y="466" text-anchor="middle" class="tree-node-text">"Titanium"</text>
             </g>
 
           </svg>

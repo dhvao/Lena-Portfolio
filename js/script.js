@@ -331,3 +331,14 @@ animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
     if (e.key === 'ArrowRight')  show(current + 1);
   });
 }());
+
+/* ── Brand Research tree — scroll-in animation ─── */
+(function () {
+  const wrap = document.getElementById('brandMap');
+  if (!wrap) return;
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) wrap.classList.add('is-visible');
+    });
+  }, { threshold: 0.15 }).observe(wrap);
+}());
