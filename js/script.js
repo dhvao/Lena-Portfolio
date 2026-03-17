@@ -221,7 +221,7 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
 }());
 
 /* ── 3D model — oscillating rotation (no full 360) ── */
-function animateModel(id, speed, swing, phi, direction) {
+function animateModel(id, speed, swing, phi, direction, thetaOffset = 0, radius = 'auto') {
   const mv = document.getElementById(id);
   if (!mv) return;
   mv.addEventListener('load', () => {
@@ -229,8 +229,8 @@ function animateModel(id, speed, swing, phi, direction) {
     function tick(now) {
       if (!startTime) startTime = now;
       const t = (now - startTime) / 1000;
-      const theta = Math.sin(t * speed) * swing * direction;
-      mv.cameraOrbit = `${theta}deg ${phi}deg auto`;
+      const theta = thetaOffset + Math.sin(t * speed) * swing * direction;
+      mv.cameraOrbit = `${theta}deg ${phi}deg ${radius}`;
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);

@@ -328,13 +328,30 @@
 
     <div class="learn-intro-box">
       <div class="proj-inner">
-        <p class="learn-intro-text">As a design student, I took on the role of an engineer intern with the intentions of...</p>
-        <ul class="learn-intro-list">
-          <li>Understanding the technical aspects and production of creating a design</li>
-          <li>Being able to rationalize whether my designs, and other people's designs will be achievable in the real world</li>
-          <li>Having awareness of all the requirements and legal regulations that may apply to the build of a product</li>
-          <li>Learning where I see myself career wise, potentially moving more towards a design engineering role</li>
-        </ul>
+        <div class="learn-intro-inner">
+          <div class="learn-intro-content">
+            <p class="learn-intro-text">As a design student, I took on the role of an engineer intern with the intentions of...</p>
+            <ul class="learn-intro-list">
+              <li>Understanding the technical aspects and production of creating a design</li>
+              <li>Being able to rationalize whether my designs, and other people's designs will be achievable in the real world</li>
+              <li>Having awareness of all the requirements and legal regulations that may apply to the build of a product</li>
+              <li>Learning where I see myself career wise, potentially moving more towards a design engineering role</li>
+            </ul>
+          </div>
+          <div class="learn-intro-model">
+            <model-viewer id="mv-jaguar"
+              src="Images/project-01-lear/3d-models/jaguar.glb"
+              shadow-intensity="0"
+              exposure="1.2"
+              camera-orbit="-90deg 90deg auto"
+              field-of-view="16deg"
+              camera-controls
+              min-camera-orbit="-120deg 90deg auto"
+              max-camera-orbit="-60deg 90deg auto"
+              style="width:100%;height:100%;background:transparent;--progress-bar-color:transparent;transform:rotate(135deg);">
+            </model-viewer>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -725,9 +742,12 @@
 
     <!-- ── AUDI HERO BANNER ──────────────────────── -->
     <div class="pw-hero">
-      <div class="pw-hero-content">
-        <p class="pw-hero-title">What Audi means to me</p>
-        <p class="pw-hero-sub">Lena Eblenkamp <strong>Personal</strong><br>Concept</p>
+      <div class="pw-hero-left">
+        <p class="pw-hero-eyebrow">Lena Eblenkamp · Personal Concept</p>
+        <h2 class="pw-hero-title">What Audi<br>means to me</h2>
+        <div class="pw-hero-rule"></div>
+      </div>
+      <div class="pw-hero-right">
         <img src="Images/project-03-personal/audi/audi-logo.png" alt="Audi" class="pw-audi-logo">
       </div>
     </div>
