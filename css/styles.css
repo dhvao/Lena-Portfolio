@@ -644,7 +644,6 @@ ul { list-style: none; }
 
 .proj-section.alt-bg { background: var(--bg-alt); }
 
-.proj-inner { }
 
 /* Brand logo row */
 .proj-brand { margin-bottom: 2rem; }
@@ -1299,7 +1298,7 @@ ul { list-style: none; }
 /* ── Passenger Journey SVG Roadmap ───────────────── */
 .journey-roadmap {
   margin: 2rem 0 3rem;
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 .roadmap-title {
@@ -1314,9 +1313,11 @@ ul { list-style: none; }
 
 .roadmap-svg-wrap {
   width: 60%;
+  min-width: 780px;
   margin: 1rem auto 0;
   overflow: hidden;
-  background: #1a1f2e;
+  background: linear-gradient(rgba(10,15,30,0.55), rgba(10,15,30,0.55)),
+              url('../Images/project-02-evtol/roadmap/mountains.jpg') center/cover no-repeat;
   padding: 0 0 2rem;
   border-radius: 98px;
 }
@@ -1355,6 +1356,8 @@ ul { list-style: none; }
   fill: #ffffff;
   text-anchor: middle;
   letter-spacing: 2px;
+  transform: translateY(10px);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.9));
 }
 
 /* Sub-items */
@@ -1362,9 +1365,11 @@ ul { list-style: none; }
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  fill: rgba(255,255,255,0.75);
+  fill: rgba(255,255,255,0.9);
   text-anchor: middle;
   letter-spacing: 0.5px;
+  transform: translateY(10px);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.9));
 }
 
 /* Nodes hidden until animated in */
@@ -1588,18 +1593,84 @@ ul { list-style: none; }
 }
 
 /* packaging 2×2 grid */
-.packaging-grid {
+.packaging-strip {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
   margin: 0 0 2rem;
 }
 
-.packaging-grid img {
+.pkg-thumb {
   width: 100%;
   height: auto;
   display: block;
+  cursor: zoom-in;
+  border-radius: 4px;
+  transition: opacity 0.2s;
 }
+
+.pkg-thumb:hover { opacity: 0.85; }
+
+/* Packaging lightbox */
+.pkg-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.pkg-lightbox.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#pkg-lb-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 4px;
+  display: block;
+}
+
+.pkg-lb-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.pkg-lb-close:hover { opacity: 1; }
+
+.pkg-lb-prev,
+.pkg-lb-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.pkg-lb-prev { left: 1.2rem; }
+.pkg-lb-next { right: 1.2rem; }
+.pkg-lb-prev:hover, .pkg-lb-next:hover { background: rgba(255,255,255,0.25); }
 
 @media (max-width: 768px) {
   .cmf-grid { grid-template-columns: 1fr; }

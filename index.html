@@ -439,7 +439,7 @@
             </div>
           </div>
           <div class="wildlife-copy">
-            <img src="Images/project-02-evtol/brand-research/mute-icon.png" alt="Muted sound icon" class="wildlife-icon">
+            <img src="Images/project-02-evtol/intro/mute_icon.png" alt="Muted sound icon" class="wildlife-icon">
             <p class="wildlife-subtitle">Non-intrusive design intentions</p>
             <p class="wildlife-body">Job production and limited pods at a time will prevent disruption</p>
           </div>
@@ -471,6 +471,9 @@
         <svg id="roadmapSvg" viewBox="-40 0 1500 540" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
 
           <defs>
+            <clipPath id="clip-n1">
+              <rect x="54" y="132" width="72" height="72" rx="8" ry="8"/>
+            </clipPath>
             <clipPath id="clip-n2">
               <circle cx="240" cy="348" r="44"/>
             </clipPath>
@@ -519,12 +522,30 @@
 
           <!-- N1: Book Journey -->
           <g class="rm-node" data-idx="0">
-            <circle cx="90" cy="168" r="44" fill="#FF6B6B"/>
-            <circle cx="90" cy="168" r="48" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
-            <text x="90" y="226" class="rm-title">BOOK JOURNEY</text>
-            <text x="90" y="241" class="rm-sub">Meal plan</text>
-            <text x="90" y="256" class="rm-sub">Duration</text>
-            <text x="90" y="271" class="rm-sub">Interests</text>
+            <!-- white box with rounded corners -->
+            <rect x="54" y="132" width="72" height="72" rx="8" ry="8" fill="#ffffff"/>
+            <!-- outer ring -->
+            <rect x="50" y="128" width="80" height="80" rx="11" ry="11" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>
+            <!-- ticket content clipped to white box so corners stay round -->
+            <g clip-path="url(#clip-n1)">
+              <!-- dark header bar -->
+              <rect x="54" y="132" width="72" height="22" fill="#1a1f2e"/>
+              <!-- header line stubs -->
+              <rect x="61" y="138" width="30" height="4" rx="2" fill="rgba(255,255,255,0.5)"/>
+              <rect x="61" y="145" width="20" height="3" rx="2" fill="rgba(255,255,255,0.3)"/>
+              <!-- dotted divider -->
+              <line x1="59" x2="121" y1="157" y2="157" stroke="#bbbbbb" stroke-width="1" stroke-dasharray="3,3"/>
+              <!-- text line stubs -->
+              <rect x="61" y="163" width="44" height="6" rx="2" fill="#b0b0b0"/>
+              <rect x="61" y="175" width="34" height="6" rx="2" fill="#b0b0b0"/>
+              <rect x="61" y="187" width="40" height="6" rx="2" fill="#b0b0b0"/>
+              <!-- stamp circle -->
+              <circle cx="114" cy="180" r="11" fill="none" stroke="#d0d0d0" stroke-width="1.5"/>
+            </g>
+            <text x="90" y="228" class="rm-title">BOOK JOURNEY</text>
+            <text x="90" y="244" class="rm-sub">Meal plan</text>
+            <text x="90" y="259" class="rm-sub">Duration</text>
+            <text x="90" y="274" class="rm-sub">Interests</text>
           </g>
 
           <!-- N2: Check in -->
@@ -675,11 +696,11 @@
       <!-- ── PACKAGING ──────────────────────────────── -->
       <h4 class="packaging-heading">PACKAGING</h4>
 
-      <div class="packaging-grid">
-        <img src="Images/project-02-evtol/packaging/packaging-01.jpeg" alt="Packaging">
-        <img src="Images/project-02-evtol/packaging/packaging-02.jpeg" alt="Packaging">
-        <img src="Images/project-02-evtol/packaging/packaging-03.jpeg" alt="Packaging">
-        <img src="Images/project-02-evtol/packaging/packaging-04.jpeg" alt="Packaging">
+      <div class="packaging-strip">
+        <img src="Images/project-02-evtol/packaging/packaging-01.jpeg" alt="Packaging" class="pkg-thumb" data-index="0">
+        <img src="Images/project-02-evtol/packaging/packaging-02.jpeg" alt="Packaging" class="pkg-thumb" data-index="1">
+        <img src="Images/project-02-evtol/packaging/packaging-03.jpeg" alt="Packaging" class="pkg-thumb" data-index="2">
+        <img src="Images/project-02-evtol/packaging/packaging-04.jpeg" alt="Packaging" class="pkg-thumb" data-index="3">
       </div>
 
       <!-- ── GALLERY ────────────────────────────────── -->
@@ -817,6 +838,14 @@
     <p class="footer-sub">Portfolio · 2026</p>
   </footer>
 
+
+  <!-- ── Packaging lightbox ── -->
+  <div id="pkg-lightbox" class="pkg-lightbox" aria-hidden="true">
+    <button class="pkg-lb-close">&#x2715;</button>
+    <button class="pkg-lb-prev">&#8592;</button>
+    <img id="pkg-lb-img" src="" alt="Packaging detail">
+    <button class="pkg-lb-next">&#8594;</button>
+  </div>
 
   <!-- ── Gallery lightbox overlay ── -->
   <div id="gallery-overlay" class="gallery-overlay" aria-hidden="true">
