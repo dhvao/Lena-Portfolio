@@ -508,6 +508,12 @@
         <svg id="roadmapSvg" viewBox="-40 0 1500 540" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
 
           <defs>
+            <!-- Pulse comet gradient -->
+            <linearGradient id="pulseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="rgba(100,180,255,0)"/>
+              <stop offset="60%"  stop-color="rgba(140,200,255,0.6)"/>
+              <stop offset="100%" stop-color="rgba(200,230,255,1)"/>
+            </linearGradient>
             <clipPath id="clip-n1">
               <rect x="54" y="132" width="72" height="72" rx="8" ry="8"/>
             </clipPath>
@@ -539,6 +545,26 @@
 
           <!-- Scribbly connecting path — drawn first so circles sit on top -->
           <path id="roadmapPath" class="rm-path"
+            d="M 90,168
+               C 65,72 158,22 178,238
+               C 198,445 228,318 240,348
+               C 252,378 296,448 344,52
+               C 390,-28 398,98 395,138
+               C 392,172 428,52 484,272
+               C 538,462 558,396 558,372
+               C 558,348 596,182 656,214
+               C 714,244 714,264 714,248
+               C 714,230 762,46 812,204
+               C 858,354 872,392 872,368
+               C 872,344 918,450 966,258
+               C 1012,76 1028,106 1028,132
+               C 1028,152 1074,28 1118,248
+               C 1162,448 1184,412 1184,376
+               C 1184,342 1232,162 1296,118
+               C 1356,78 1342,140 1342,155"/>
+
+          <!-- Pulse glow travelling along path -->
+          <path class="rm-pulse"
             d="M 90,168
                C 65,72 158,22 178,238
                C 198,445 228,318 240,348
