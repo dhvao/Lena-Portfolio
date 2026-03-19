@@ -415,3 +415,36 @@ animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
     });
   }, { threshold: 0.15 }).observe(wrap);
 }());
+
+/* ── Who Products — staggered reveal + 3D tilt ─── */
+(function () {
+  const cards = document.querySelectorAll('.who-card');
+  if (!cards.length) return;
+
+  // Stagger-reveal on scroll
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(card => revealObs.observe(card));
+
+  // 3D magnetic tilt on mouse move
+  cards.forEach(card => {
+    const inner = card.querySelector('.who-card-inner');
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;   // -0.5 → 0.5
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      inner.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      inner.style.transform = '';
+    });
+  });
+}());

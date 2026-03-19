@@ -2418,26 +2418,116 @@ ul { list-style: none; }
 }
 
 .pw-who-products {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem 0 0;
-  filter: grayscale(100%);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 2px 0 0;
 }
 
-.pw-who-products img {
-  height: 100px;
-  width: auto;
+/* Card — base + entrance state */
+.who-card {
+  position: relative;
+  perspective: 900px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.who-card:nth-child(1) { transition-delay: 0.04s; }
+.who-card:nth-child(2) { transition-delay: 0.11s; }
+.who-card:nth-child(3) { transition-delay: 0.18s; }
+.who-card:nth-child(4) { transition-delay: 0.25s; }
+.who-card:nth-child(5) { transition-delay: 0.32s; }
+.who-card:nth-child(6) { transition-delay: 0.39s; }
+
+.who-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card inner — holds the 3D tilt */
+.who-card-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #0d0d0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.12s ease;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+.who-card:last-child .who-card-inner {
+  border-right: none;
+}
+
+/* Snap back with a spring when leaving */
+.who-card:not(:hover) .who-card-inner {
+  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* Product image */
+.who-card-inner img {
+  width: 72%;
+  height: 72%;
   object-fit: contain;
   display: block;
-  flex-shrink: 0;
+  filter: grayscale(100%);
+  transition: filter 0.55s ease, transform 0.55s ease;
+}
+
+.who-card:hover .who-card-inner img {
+  filter: grayscale(0%);
+  transform: scale(1.06);
+}
+
+/* Audience label — slides up from below */
+.who-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 10, 0.9);
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  padding: 0.6rem 0.7rem 0.65rem;
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.who-card:hover .who-card-label {
+  transform: translateY(0);
+}
+
+/* Subtle top-edge glow on hover */
+.who-card-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid rgba(255,255,255,0);
+  transition: border-color 0.4s ease;
+  pointer-events: none;
+}
+
+.who-card:hover .who-card-inner::after {
+  border-top-color: rgba(255,255,255,0.18);
 }
 
 @media (max-width: 768px) {
   .pw-who-text-panel { position: static; width: 100%; }
-  .pw-who-products { flex-wrap: wrap; }
-  .pw-who-products img { height: 70px; }
+  .pw-who-products { grid-template-columns: repeat(3, 1fr); }
+  .who-card-inner { aspect-ratio: 1; }
+  .who-card-inner img { width: 65%; height: 65%; }
+}
+
+@media (max-width: 480px) {
+  .pw-who-products { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Storyboard section */
