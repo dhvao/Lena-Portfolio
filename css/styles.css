@@ -2092,6 +2092,269 @@ ul { list-style: none; }
   fill: #ffffff;
 }
 
+/* Design direction section */
+.pw-design-section {
+  margin: 0 0 4rem;
+}
+
+.pw-quote-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 0;
+  background: #3b3b3b;
+  padding: 2rem 2.5rem;
+}
+
+.pw-quote-item {
+  position: relative;
+  padding-left: 1.4rem;
+  padding-bottom: 0.6rem;
+}
+
+/* L-bracket: vertical bar */
+.pw-quote-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #fff;
+}
+
+/* L-bracket: horizontal foot */
+.pw-quote-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 14px;
+  height: 2px;
+  background: #fff;
+}
+
+.pw-quote-item p {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #fff;
+  margin: 0;
+}
+
+.pw-quote-item--center {
+  align-self: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.pw-design-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+
+.pw-design-img--flush {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.pw-img-specs-row {
+  position: relative;
+}
+
+.pw-design-img-half {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pw-specs-box {
+  position: absolute;
+  bottom: 6%;
+  right: 4%;
+  background: rgba(255,255,255,0.92);
+  padding: 1.2rem 1.6rem;
+  min-width: 240px;
+}
+
+.pw-specs-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 1rem;
+  color: #111;
+  border-bottom: 1px solid #111;
+  padding-bottom: 0.4rem;
+}
+
+.pw-specs-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pw-specs-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  padding-bottom: 0.4rem;
+  gap: 1rem;
+}
+
+.pw-specs-label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: #444;
+}
+
+.pw-specs-value {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #111;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .pw-img-specs-row {
+    flex-direction: column;
+  }
+  .pw-design-img-half {
+    width: 100%;
+  }
+  .pw-specs-box {
+    flex: unset;
+    width: 100%;
+  }
+}
+
+/* Breathing Structure section */
+.pw-breathing-section {
+  margin: 3rem 0 4rem;
+  background: linear-gradient(to right, #ffffff 30%, #c8c8c8 100%);
+  padding: 2.5rem 2.5rem 2rem;
+}
+
+.pw-breathing-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.pw-breathing-title {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 400;
+  color: #111;
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.pw-breathing-rule {
+  width: 180px;
+  height: 1px;
+  background: #111;
+  margin: 0 auto 0.6rem;
+}
+
+.pw-breathing-byline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #333;
+  margin: 0;
+}
+
+.pw-breathing-body {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+
+.pw-breathing-sketch img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pw-breathing-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pw-breathing-desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #111;
+  margin: 0;
+}
+
+.pw-breathing-intentions-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0.4rem 0 0;
+}
+
+.pw-breathing-rule-sm {
+  width: 100%;
+  height: 1px;
+  background: #111;
+  margin: 0.1rem 0 0.4rem;
+}
+
+.pw-breathing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.pw-breathing-list li {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #111;
+}
+
+.pw-breathing-brief {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.pw-breathing-brief-label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #BB0A21;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.4rem;
+}
+
+.pw-breathing-brief-text {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #111;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .pw-breathing-body {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ══════════════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════════════ */
