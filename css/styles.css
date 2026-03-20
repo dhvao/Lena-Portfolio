@@ -3022,3 +3022,196 @@ ul { list-style: none; }
   .pnav-label { display: none; }
   .pnav-inner { flex-direction: column; }
 }
+
+/* ── Tablet landscape (≤ 1024px) ─────────────────── */
+@media (max-width: 1024px) {
+  /* Reduce the 3D model fixed width so it fits comfortably */
+  .learn-intro-model {
+    width: 320px;
+    height: 240px;
+    transform: translateX(-40px);
+  }
+
+  /* 3-col render / dev grids → 2 cols */
+  .final-render-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* story block: let it breathe */
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+  .story-heading {
+    position: static;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ── Tablet portrait (≤ 768px) — supplement scattered rules ─ */
+@media (max-width: 768px) {
+  /* Hero header spacing */
+  .site-header {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+  }
+
+  /* "What else did I learn" intro block: stack vertically */
+  .learn-intro-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .learn-intro-model {
+    width: 100%;
+    height: 260px;
+    transform: none;
+    margin-top: 1.5rem;
+  }
+
+  /* 3-col grids → 2 cols */
+  .final-render-grid      { grid-template-columns: repeat(2, 1fr); }
+  .form-dev-trio          { grid-template-columns: repeat(2, 1fr); }
+  .final-dev-bottom       { grid-template-columns: repeat(2, 1fr); }
+
+  /* story grid already collapses at 1024px via the rule above */
+
+  /* EVTOL design-brief overlay: tighter padding */
+  .design-brief-overlay {
+    padding: 1.5rem 1.5rem 1.2rem;
+  }
+  .design-brief-title {
+    white-space: normal;
+    font-size: clamp(0.95rem, 2vw, 1.3rem);
+  }
+
+  /* interior overlap images: soften the negative margins */
+  .interior-dev-pair {
+    margin-top: -4%;
+  }
+  .interior-dev-pair img:nth-child(2) {
+    margin-top: -20%;
+  }
+  .interior-dev-pair img:nth-child(3) {
+    margin-top: -14%;
+  }
+
+  /* Render annotations are unreadable at this size — hide them */
+  .pw-render-annotation,
+  .pw-render-what,
+  .pw-render-why,
+  .pw-mech-1,
+  .pw-mech-2,
+  .pw-mech-3 {
+    display: none;
+  }
+
+  /* Depth carousel: reduce perspective & bump up card width */
+  .dc-stage {
+    padding-bottom: 68%;
+    perspective: 800px;
+  }
+  .dc-card {
+    width: 54%;
+    left: 23%;
+    margin-top: -36%;
+  }
+  .dc-card[data-pos="-1"] {
+    transform: translateX(-68%) translateZ(-80px) rotateY(12deg) scale(0.80);
+  }
+  .dc-card[data-pos="1"] {
+    transform: translateX(68%) translateZ(-80px) rotateY(-12deg) scale(0.80);
+  }
+
+  /* Roadmap: allow smooth horizontal scroll on iOS */
+  .journey-roadmap {
+    -webkit-overflow-scrolling: touch;
+  }
+  .roadmap-svg-wrap {
+    width: 100%;
+  }
+
+  /* Lear header text: push lower so it doesn't sit on the car */
+  .lear-header-text {
+    left: 3%;
+    bottom: 2%;
+    width: 60%;
+  }
+}
+
+/* ── Large phone (≤ 600px) ───────────────────────── */
+@media (max-width: 600px) {
+  /* Single-column everything not yet collapsed */
+  .final-render-grid  { grid-template-columns: 1fr; }
+  .form-dev-trio      { grid-template-columns: 1fr; }
+  .final-dev-bottom   { grid-template-columns: 1fr; }
+  .leather-grid       { grid-template-columns: 1fr; }
+  .packaging-strip    { grid-template-columns: 1fr; }
+
+  /* Stack loyalty section reading text over images */
+  .pw-loyalty-section { grid-template-columns: 1fr; }
+
+  /* Lear header text: static block below the image */
+  .lear-header-text {
+    position: static;
+    width: 100%;
+    padding: 0.6rem 0 0.2rem;
+    background: none;
+  }
+
+  /* Belt overlay: position closer to edge */
+  .belt-overlay {
+    bottom: 0.75rem;
+    left: 0.75rem;
+  }
+
+  /* Design brief overlay: small phones */
+  .design-brief-overlay {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  /* Wildlife icon: smaller on phone */
+  .wildlife-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* 3D model: full width short box */
+  .learn-intro-model {
+    height: 200px;
+  }
+}
+
+/* ── Small phone (≤ 420px) ───────────────────────── */
+@media (max-width: 420px) {
+  /* Reduce hero name spacing so it wraps comfortably */
+  .hero-name {
+    letter-spacing: 0.1em;
+  }
+
+  /* Depth carousel: flat mode (disable 3D transforms, show single card) */
+  .dc-stage {
+    padding-bottom: 120%;
+    perspective: none;
+  }
+  .dc-card {
+    width: 76%;
+    left: 12%;
+    margin-top: -50.7%;
+  }
+  .dc-card[data-pos="-1"],
+  .dc-card[data-pos="1"] {
+    transform: translateX(0) translateZ(0) rotateY(0deg) scale(0.85);
+    opacity: 0.2;
+  }
+
+  /* Learn grid: single column */
+  .learn-grid { grid-template-columns: 1fr; }
+
+  /* Projects nav item: tighter height */
+  .pnav-item { min-height: 100px; }
+
+  /* About portrait: smaller cap */
+  .about-portrait .img-ph { max-width: 220px; }
+
+  /* Reduce section heading letter spacing for narrow screens */
+  .proj-section-heading { letter-spacing: 0.15em; }
+}

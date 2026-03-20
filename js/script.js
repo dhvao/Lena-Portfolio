@@ -168,6 +168,16 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
   dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i + 1)));
   window.addEventListener('resize', () => positionTrack(false));
 
+  // Touch / swipe support
+  let scTouchX = null;
+  viewport.addEventListener('touchstart', e => { scTouchX = e.touches[0].clientX; }, { passive: true });
+  viewport.addEventListener('touchend', e => {
+    if (scTouchX === null) return;
+    const dx = e.changedTouches[0].clientX - scTouchX;
+    if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+    scTouchX = null;
+  });
+
   requestAnimationFrame(() => positionTrack(false));
 });
 
@@ -400,6 +410,19 @@ animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
         update();
       }
     });
+  });
+
+  // Touch / swipe support
+  let dcTouchX = null;
+  wrap.addEventListener('touchstart', e => { dcTouchX = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', e => {
+    if (dcTouchX === null) return;
+    const dx = e.changedTouches[0].clientX - dcTouchX;
+    if (Math.abs(dx) > 40) {
+      active = dx < 0 ? (active + 1) % n : (active - 1 + n) % n;
+      update();
+    }
+    dcTouchX = null;
   });
 
   update();
