@@ -404,6 +404,13 @@ ul { list-style: none; }
 .showcase-item:nth-child(2) .showcase-viewer-wrap { animation-delay: 1.6s; }
 .showcase-item:nth-child(3) .showcase-viewer-wrap { animation-delay: 3.2s; }
 
+@media (max-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
 .showcase-placeholder {
   border: 1px dashed rgba(255,255,255,0.15);
   border-radius: 4px;
@@ -1530,6 +1537,114 @@ ul { list-style: none; }
 .journey-roadmap {
   margin: 2rem 0 3rem;
   overflow-x: auto;
+}
+
+/* ── Vertical Journey (mobile only) ─────────────── */
+.rm-vertical {
+  display: none;
+}
+
+.rm-vertical .roadmap-title {
+  margin-bottom: 1.75rem;
+}
+
+/* Track: holds the continuous center line */
+.rm-v-track {
+  position: relative;
+}
+
+.rm-v-track::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 36px;
+  bottom: 36px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.3) 0,
+    rgba(255,255,255,0.3) 5px,
+    transparent 5px,
+    transparent 11px
+  );
+}
+
+/* 3-column grid: [text/empty] [icon] [empty/text] */
+.rm-v-node {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Center column — icon sits on top of the line */
+.rm-v-icon-col {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.rm-v-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.35);
+  overflow: hidden;
+  background: #1a1f2e;
+  flex-shrink: 0;
+}
+
+.rm-v-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rm-v-circle--ticket {
+  border-radius: 10px;
+}
+
+.rm-v-circle--ticket svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Side columns */
+.rm-v-side {
+  padding: 0.25rem 0;
+}
+
+.rm-v-side--left {
+  text-align: right;
+  padding-right: 0.9rem;
+}
+
+.rm-v-side--right {
+  text-align: left;
+  padding-left: 0.9rem;
+}
+
+
+.rm-v-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+}
+
+.rm-v-sub {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 0.18rem;
+  line-height: 1.45;
 }
 
 .roadmap-title {
@@ -3011,7 +3126,8 @@ ul { list-style: none; }
   .pnav-label span { font-size: 2rem; }
 
   .lear-header-text { left: 5%; bottom: 5%; width: 55%; }
-  .learn-grid { grid-template-columns: repeat(2, 1fr); }
+  .learn-grid { grid-template-columns: 1fr; }
+  .learn-photo-span { grid-column: span 1; order: 999; }
   .final-dev-grid { grid-template-columns: 1fr; }
 }
 
@@ -3122,11 +3238,13 @@ ul { list-style: none; }
   }
 
   /* Roadmap: allow smooth horizontal scroll on iOS */
-  .journey-roadmap {
-    -webkit-overflow-scrolling: touch;
-  }
-  .roadmap-svg-wrap {
-    width: 100%;
+  .roadmap-svg-wrap { display: none; }
+  .rm-vertical {
+    display: block;
+    background: linear-gradient(135deg, #0f1c35 0%, #1b2a4a 40%, #1e3a5f 70%, #162440 100%);
+    border-radius: 24px;
+    padding: 2rem 2rem 0.75rem 2rem;
+    margin: 1rem var(--px);
   }
 
   /* Lear header text: push lower so it doesn't sit on the car */
