@@ -2336,14 +2336,18 @@ ul { list-style: none; }
 
 @media (max-width: 768px) {
   .pw-img-specs-row {
-    flex-direction: column;
+    display: block;
   }
   .pw-design-img-half {
     width: 100%;
   }
   .pw-specs-box {
-    flex: unset;
+    position: static;
     width: 100%;
+    box-sizing: border-box;
+    margin-top: 1rem;
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.1);
   }
 }
 
@@ -2942,6 +2946,8 @@ ul { list-style: none; }
   .pw-loyalty-section { grid-template-columns: 1fr; }
   .pw-loyalty-research-row { grid-template-columns: 1fr; }
   .pw-loyalty-bottom-row { grid-template-columns: 1fr; }
+  .pw-loyalty-sketch-col { display: none; }
+  .pw-loyalty-arrow { display: none; }
 }
 
 /* Design renders grid */
