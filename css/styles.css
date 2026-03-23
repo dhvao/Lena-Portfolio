@@ -3127,7 +3127,7 @@ ul { list-style: none; }
   .g4 { grid-template-columns: repeat(2, 1fr); }
   .g5 { grid-template-columns: repeat(2, 1fr); }
 
-  .pn-text { width: 65%; }
+  .pn-text { width: 65%; padding-left: var(--px); }
 
   .pnav-label span { font-size: 2rem; }
 
@@ -3277,7 +3277,7 @@ ul { list-style: none; }
   .lear-header-text {
     position: static;
     width: 100%;
-    padding: 0.6rem 0 0.2rem;
+    padding: 0.75rem var(--px) 0.25rem;
     background: none;
   }
 
