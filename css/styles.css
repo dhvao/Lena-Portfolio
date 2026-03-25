@@ -2073,7 +2073,7 @@ ul { list-style: none; }
 /* Hero banner */
 .pw-hero {
   background: linear-gradient(to right, #000000 0%, #1c1c1c 30%, #666666 60%, #c8c8c8 82%, #e2e2e2 100%);
-  padding: 4rem var(--px);
+  padding: 2.5rem var(--px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2110,7 +2110,7 @@ ul { list-style: none; }
 }
 
 .pw-audi-logo {
-  width: 260px;
+  width: 160px;
   height: auto;
   display: block;
   margin: 0 auto;
