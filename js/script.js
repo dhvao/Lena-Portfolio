@@ -158,9 +158,10 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
   }
 
   // After transition: if on a clone, jump silently to the real slide
-  track.addEventListener('transitionend', () => {
-    if (current === 0)         { current = count;     positionTrack(false); }
-    else if (current === count + 1) { current = 1;    positionTrack(false); }
+  track.addEventListener('transitionend', (e) => {
+    if (e.target !== track) return;
+    if (current === 0)              { current = count; positionTrack(false); }
+    else if (current === count + 1) { current = 1;     positionTrack(false); }
   });
 
   prev.addEventListener('click', () => goTo(current - 1));
@@ -238,7 +239,7 @@ document.querySelectorAll('.skills-carousel').forEach(carousel => {
     overlay.setAttribute('aria-hidden', 'true');
   }
 
-  document.querySelectorAll('.showcase-cta[data-gallery]').forEach(btn => {
+  document.querySelectorAll('.showcase-cta[data-gallery], .dev-card[data-gallery]').forEach(btn => {
     btn.addEventListener('click', () => {
       const raw = btn.dataset.gallery.trim();
       if (!raw) return;
@@ -402,10 +403,33 @@ animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
     update();
   }));
 
-  // Click a side card to bring it to center
+  // Lightbox for centre card
+  const finalLb    = document.getElementById('final-lb');
+  const finalLbImg = document.getElementById('final-lb-img');
+
+  function openFinalLb(src, alt) {
+    finalLbImg.src = src;
+    finalLbImg.alt = alt;
+    finalLb.classList.add('is-open');
+    finalLb.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeFinalLb() {
+    finalLb.classList.remove('is-open');
+    finalLb.setAttribute('aria-hidden', 'true');
+  }
+
+  finalLb.querySelector('.final-lb-close').addEventListener('click', closeFinalLb);
+  finalLb.addEventListener('click', e => { if (e.target === finalLb) closeFinalLb(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFinalLb(); });
+
+  // Click a side card to bring it to center; click centre card to open lightbox
   cards.forEach((card, i) => {
     card.addEventListener('click', () => {
-      if (parseInt(card.dataset.pos) !== 0) {
+      if (parseInt(card.dataset.pos) === 0) {
+        const img = card.querySelector('img');
+        openFinalLb(img.src, img.alt);
+      } else {
         active = i;
         update();
       }
@@ -470,4 +494,61 @@ animateModel('mv-jaguar',     0.55, 30, 90,  1, -90);
       inner.style.transform = '';
     });
   });
+}());
+
+/* ── Morph block (wildlife → panel B) ─────────── */
+(function () {
+  const block  = document.getElementById('morphBlock');
+  const panelA = document.getElementById('morphPanelA');
+  const panelB = document.getElementById('morphPanelB');
+  if (!block || !panelA || !panelB) return;
+  if (block.classList.contains('morph-disabled')) return;
+
+  function update() {
+    const rect = block.getBoundingClientRect();
+    const vh   = window.innerHeight;
+
+    // 0 when block top hits 80% of viewport; 1 when block top hits 10%
+    const progress = Math.min(1, Math.max(0, (vh * 0.80 - rect.top) / (vh * 0.7)));
+
+    const hA = panelA.scrollHeight;
+    const hB = panelB.scrollHeight;
+    block.style.height = `${hA + (hB - hA) * progress}px`;
+
+    // Panel A: fade + slide up in first 60% of progress
+    const pa = Math.min(1, progress / 0.6);
+    panelA.style.opacity   = 1 - pa;
+    panelA.style.transform = `translateY(${-pa * 24}px)`;
+
+    // Panel B: fade + slide up in last 60% of progress
+    const pb = Math.max(0, (progress - 0.4) / 0.6);
+    panelB.style.opacity        = pb;
+    panelB.style.transform      = `translateY(${(1 - pb) * 24}px)`;
+    panelB.style.pointerEvents  = pb > 0.5 ? 'auto' : 'none';
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+}());
+
+/* ── Belt scroll-reveal ───────────────────────── */
+(function () {
+  const strip = document.getElementById('beltStrip');
+  const img   = document.getElementById('beltRevealImg');
+  if (!strip || !img) return;
+
+  function update() {
+    const rect     = strip.getBoundingClientRect();
+    const vh       = window.innerHeight;
+    // start: section enters viewport; end: section top hits viewport midpoint
+    const start    = vh;
+    const end      = vh * 0.5;
+    const progress = 1 - Math.min(1, Math.max(0, (rect.top - end) / (start - end)));
+    img.style.transform = `translateX(${(1 - progress) * -100}%)`;
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 }());

@@ -191,13 +191,16 @@
 
     </div><!-- /proj-inner -->
 
-    <!-- Featured belt image with text overlay -->
-    <div class="belt-strip">
-      <div class="belt-feature">
-        <img src="Images/project-01-lear/intro/machine-closeup.png" alt="Leather belt with gold buckle">
-        <div class="belt-overlay">
-          <h2 class="proj-section-heading">TRIM DEVELOPMENT</h2>
-          <p class="proj-caption">6 Weeks in the trim development shop</p>
+    <!-- Belt scroll-reveal section -->
+    <div class="belt-strip" id="beltStrip">
+      <div class="belt-inner">
+        <div class="belt-reveal-wrap">
+          <img src="Images/project-01-lear/intro/machine-closeup.png" alt="Leather belt closeup" class="belt-reveal-img" id="beltRevealImg">
+        </div>
+        <div class="belt-text">
+          <h2 class="proj-section-heading belt-heading">TRIM DEVELOPMENT</h2>
+          <div class="belt-rule"></div>
+          <p class="proj-caption belt-caption">6 Weeks in the trim development shop</p>
         </div>
       </div>
     </div>
@@ -304,17 +307,30 @@
 
       <p class="proj-mini-heading">FINAL PROJECT DEVELOPMENT <span class="proj-mini-sub">Mini seat.</span></p>
 
-      <div class="final-dev-grid">
-        <div class="final-dev-left">
-          <img src="Images/project-01-lear/development/dev-01.png" alt="Pattern pieces laid out">
-          <div class="final-dev-bottom">
-            <img src="Images/project-01-lear/development/dev-02.png" alt="Leather strips detail">
-            <img src="Images/project-01-lear/development/dev-03.png" alt="Seat panels">
-            <img src="Images/project-01-lear/development/dev-04.png" alt="Seat cushion view">
+      <div class="skills-carousel">
+        <div class="sc-viewport">
+          <div class="sc-track">
+            <div class="sc-slide active">
+              <img src="Images/project-01-lear/development/dev-01.png" alt="Pattern pieces laid out">
+            </div>
+            <div class="sc-slide">
+              <img src="Images/project-01-lear/development/dev-02.png" alt="Leather strips detail">
+            </div>
+            <div class="sc-slide">
+              <img src="Images/project-01-lear/development/dev-03.png" alt="Seat panels">
+            </div>
+            <div class="sc-slide">
+              <img src="Images/project-01-lear/development/dev-04.png" alt="Seat cushion view">
+            </div>
           </div>
+          <button class="sc-btn sc-btn--prev" aria-label="Previous">&#8592;</button>
+          <button class="sc-btn sc-btn--next" aria-label="Next">&#8594;</button>
         </div>
-        <div class="final-dev-right">
-          <img src="Images/project-01-lear/development/dev-05.png" alt="Seat front and back assembly">
+        <div class="sc-dots">
+          <span class="sc-dot active"></span>
+          <span class="sc-dot"></span>
+          <span class="sc-dot"></span>
+          <span class="sc-dot"></span>
         </div>
       </div>
 
@@ -471,7 +487,7 @@
 
     </div>
 
-    <div class="wildlife-panel">
+    <div class="wildlife-panel" id="morphBlock">
       <div class="wildlife-inner">
         <div class="wildlife-grid">
           <div class="wildlife-left">
@@ -490,6 +506,10 @@
           </div>
         </div>
       </div>
+
+      <!-- morph panel B parked — kept for future use
+      <div class="morph-panel morph-panel-b" id="morphPanelB">...</div>
+      -->
     </div>
 
     <div class="proj-inner">
@@ -849,38 +869,41 @@
         <img src="Images/project-02-evtol/brand-research/inspiration-red.png" alt="Additional form inspiration sketch for the Eblen-Kamper" class="form-strip-img">
       </div>
 
-      <h3 class="concept-heading">CONCEPT DEVELOPMENT</h3>
+      <!-- ── DEVELOPMENT CARDS ─────────────────────── -->
+      <div class="dev-cards" id="dev-cards">
 
-      <div class="concept-gallery">
-        <img src="Images/project-02-evtol/brand-research/inspiration-02.png" alt="Concept development" class="proj-img-full">
-      </div>
+        <a class="dev-card" href="concept-development.html">
+          <img src="Images/project-02-evtol/brand-research/inspiration-02.png" alt="Concept Development preview">
+          <div class="dev-card-overlay">
+            <span class="dev-card-title">CONCEPT DEVELOPMENT</span>
+            <span class="dev-card-cta">View &#8594;</span>
+          </div>
+        </a>
 
-      <h3 class="form-dev-heading">FORM DEVELOPMENT</h3>
+        <a class="dev-card" href="form-development.html">
+          <img src="Images/project-02-evtol/renders/exterior developemnt.png" alt="Form Development preview">
+          <div class="dev-card-overlay">
+            <span class="dev-card-title">FORM DEVELOPMENT</span>
+            <span class="dev-card-cta">View &#8594;</span>
+          </div>
+        </a>
 
-      <div class="form-dev-gallery">
-        <img src="Images/project-02-evtol/renders/render-exterior.png" alt="Form development — pod exterior evolution" class="form-dev-hero">
-        <div class="form-dev-trio">
-          <img src="Images/project-02-evtol/sketches/sketch-01.png"   alt="Form development — pod exterior with propellers">
-          <img src="Images/project-02-evtol/sketches/sketch-02.png" alt="Form development — pod exterior perspective">
-          <img src="Images/project-02-evtol/sketches/sketch-03.png" alt="Form development — pod exterior side view">
-        </div>
-      </div>
+        <a class="dev-card" href="interior-development.html">
+          <img src="Images/project-02-evtol/interior/interior-sketch-01.png" alt="Interior Development preview">
+          <div class="dev-card-overlay">
+            <span class="dev-card-title">INTERIOR DEVELOPMENT</span>
+            <span class="dev-card-cta">View &#8594;</span>
+          </div>
+        </a>
 
-      <!-- ── INTERIOR DEVELOPMENT ──────────────────── -->
-      <h3 class="interior-dev-heading">INTERIOR DEVELOPMENT</h3>
-
-      <div class="interior-dev-gallery">
-        <img src="Images/project-02-evtol/interior/interior-sketch-01.png" alt="Interior development" class="interior-dev-hero">
-        <div class="interior-dev-pair">
-          <img src="Images/project-02-evtol/interior/interior-sketch-02.png" alt="Interior development sketch">
-          <img src="Images/project-02-evtol/interior/interior-sketch-03.png" alt="Interior development sketch">
-          <img src="Images/project-02-evtol/interior/interior-sketch-04.png" alt="Interior development">
-        </div>
       </div>
 
       <div class="cmf-grid">
         <div class="cmf-left">
-          <img src="Images/project-02-evtol/cmf/cmf-01.jpg" alt="CMF board">
+          <div class="hover-reveal-wrap">
+            <img src="Images/project-02-evtol/cmf/cmf-01.jpg" alt="CMF board">
+            <div class="hover-reveal-overlay"><p>Placeholder text for Cool &amp; Bright CMF board.</p></div>
+          </div>
           <span class="cmf-side-title">Cool &amp; Bright</span>
         </div>
         <div class="cmf-right">
@@ -888,7 +911,10 @@
           <span class="cmf-top-title">DESERT ESCAPE</span>
         </div>
         <div class="cmf-left">
-          <img src="Images/project-02-evtol/cmf/cmf-03.jpg" alt="CMF board">
+          <div class="hover-reveal-wrap">
+            <img src="Images/project-02-evtol/cmf/cmf-03.jpg" alt="CMF board">
+            <div class="hover-reveal-overlay"><p>Placeholder text for Warm &amp; Cozy CMF board.</p></div>
+          </div>
           <span class="cmf-side-title">Warm &amp; Cozy</span>
         </div>
         <div class="cmf-right">
@@ -896,7 +922,10 @@
           <span class="cmf-top-title">MOUNTAIN CRUISER</span>
         </div>
         <div class="cmf-left">
-          <img src="Images/project-02-evtol/cmf/cmf-05.jpg" alt="CMF board">
+          <div class="hover-reveal-wrap">
+            <img src="Images/project-02-evtol/cmf/cmf-05.jpg" alt="CMF board">
+            <div class="hover-reveal-overlay"><p>Placeholder text for Relaxing &amp; Fresh CMF board.</p></div>
+          </div>
           <span class="cmf-side-title">Relaxing &amp; Fresh</span>
         </div>
         <div class="cmf-right">
@@ -1291,11 +1320,19 @@
     <button class="pkg-lb-next">&#8594;</button>
   </div>
 
+  <!-- ── Final project image lightbox ── -->
+  <div id="final-lb" class="final-lb" aria-hidden="true">
+    <button class="final-lb-close" aria-label="Close">&#x2715;</button>
+    <img id="final-lb-img" src="" alt="">
+  </div>
+
   <!-- ── Gallery lightbox overlay ── -->
   <div id="gallery-overlay" class="gallery-overlay" aria-hidden="true">
-    <button class="gallery-close" aria-label="Close gallery">&#x2715;</button>
-    <div class="gallery-scroll">
-      <div id="gallery-content" class="gallery-content"></div>
+    <div class="gallery-modal">
+      <div class="gallery-scroll">
+        <button class="gallery-close" aria-label="Close gallery">&#x2715;</button>
+        <div id="gallery-content" class="gallery-content"></div>
+      </div>
     </div>
   </div>
 
